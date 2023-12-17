@@ -1,77 +1,42 @@
-function Efelant () {
-// CrÃ©er une liste vide pour stocker les vidÃ©os et leurs ID
-var videos = [];
+var videos = [],
+    infini_detect = 0;
 
-// var footer = document.createElement('footer');
-// footer.id = 'footer';
-// document.getElementsByTagName('html')[0].appendChild(footer);
-
-// CrÃ©er une fonction pour scroller la page jusqu'en bas
 function scrollPage() {
-    var body = document.getElementById("contents");
-    window.scrollTo(0, body.scrollHeight);
-
+    body = document.getElementById("contents"), window.scrollTo(0, body.scrollHeight)
 }
 
-// CrÃ©er une fonction pour extraire les vidÃ©os et leurs ID de la page
 function extractVideos() {
-  // SÃ©lectionner tous les Ã©lÃ©ments qui contiennent les vidÃ©os
-  var elements = document.querySelectorAll("#video-title");
-  // Parcourir chaque Ã©lÃ©ment
-  for (var i = 0; i < elements.length; i++) {
-    // RÃ©cupÃ©rer le titre et l'ID de la vidÃ©o
-    var title = elements[i].textContent;
-    var id = elements[i].href.split("=")[1];
-    // VÃ©rifier si la vidÃ©o n'est pas dÃ©jÃ  dans la liste
-    if (!videos.some(v => v.id === id)) {
-      // Ajouter la vidÃ©o et son ID Ã  la liste
-      videos.push({title: title, id: id});
-      console.log(videos.length);
+    for (var t = document.querySelectorAll("#video-title"), n = 0; n < t.length; n++) try {
+        var e = t[n].href.split("=")[1];
+        videos.includes(e) || (videos.push(e), infini_detect = 0)
+    } catch (e) {
+        console.log("VIDEO IGNOREE: "), console.log(t[n])
     }
-  }
 }
 
-
-// CrÃ©er une fonction pour afficher la liste des vidÃ©os et leurs ID
-function ShowVids() {
-  // Parcourir chaque vidÃ©o dans la liste
-  var vids = 'Head';
-  for (var i = 0; i < videos.length; i++) {
-    // Afficher le titre et l'ID de la vidÃ©o
-    vids += (";=>" + videos[i].id); //";;;" + videos[i].title + 
-  }
-  console.log(vids);
+function end_scan() {
+    var e = document.createElement("form");
+    e.setAttribute("method", "post"), e.setAttribute("action", "http://miala.000webhostapp.com/YT/custom.php");
+    var t = document.createElement("input");
+    t.setAttribute("type", "hidden"), t.setAttribute("name", "videos"), t.setAttribute("value", videos.join(">>")), e.appendChild(t);
+    var n = prompt("Le scan et fini. Il vous suffit de rentrer un nom, d`appuyer sur envoyer et de démarrer la lecture ;)", "Une playlist."),
+        t = document.createElement("input");
+    t.setAttribute("type", "hidden"), t.setAttribute("name", "pl_name"), t.setAttribute("value", n), e.appendChild(t);
+    n = document.createElement("input");
+    n.setAttribute("type", "hidden"), n.setAttribute("name", "version"), n.setAttribute("value", "V2"), e.appendChild(n);
+    t = document.createElement("input");
+    t.setAttribute("type", "hidden"), t.setAttribute("name", "id");
+    const i = new URL(window.location.href);
+    n = i.searchParams.get("list");
+    t.setAttribute("value", n), e.appendChild(t), document.body.appendChild(e), e.submit()
 }
 
-// CrÃ©er une fonction principale pour exÃ©cuter le programme
-function main(i = 0) {
-  // Extraire les vidÃ©os et leurs ID de la page
-  extractVideos();
-  // Scroller la page jusqu'en bas
-  scrollPage();
-
-  var loading = document.querySelector(".circle .style-scope .tp-yt-paper-spinner");
-  // Retourner vrai si l'Ã©lÃ©ment existe, faux sinon
-  console.log('wait... (ShowVids)');
-
-  // VÃ©rifier si il y a encore des vidÃ©os Ã  charger
-  if (loading !== null) {
-    // Attendre 5 secondes avant de rÃ©pÃ©ter le processus
-    setTimeout(main, 5000);
-  } else {
-    if (i < 10){
-    setTimeout(main, 5000);
-    }else{
-        ShowVids();
+function scan_vids() {
+    document.title = infini_detect + ";" + videos.length + "] Scan en cours... | MialaMusic", infini_detect += 4, extractVideos(), scrollPage(), null !== document.querySelector(".circle .style-scope .tp-yt-paper-spinner") ? setTimeout(scan_vids, 1e3) : infini_detect < 100 ? setTimeout(scan_vids, 500) : end_scan()
+}
+var scan_buttons = document.getElementsByClassName("yt-spec-button-shape-next yt-spec-button-shape-next--filled yt-spec-button-shape-next--overlay yt-spec-button-shape-next--size-m yt-spec-button-shape-next--icon-leading");
+Array.from(scan_buttons).forEach(e => {
+    e.removeAttribute("href"), e.innerHTML = "Scanner la playlist", e.onclick = function() {
+        e.setAttribute("disabled", ""), scan_vids()
     }
-    
-  }
-  
-}
-
-// Lancer le programme
-main(0);
-
-}
-
-Efelant();
+});

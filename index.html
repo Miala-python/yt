@@ -1,13 +1,31 @@
 Cod pr mttr ds fv:
 
 <script>
-funtion main() {
-  const xhttp = new XMLHttpRequest();
-  xhttp.onload = function() {
-    document.getElementById("demo").innerHTML = this.responseText;
-    }
-  xhttp.open("GET", "https://miala-python.github.io/yt/fav.js", true);
-  xhttp.send();
-}
+// funtion main() {
+//   const xhttp = new XMLHttpRequest();
+//   xhttp.onload = function() {
+//     document.getElementById("demo").innerHTML = this.responseText;
+
+    //Création de la balise
+
+javascript: var monNouveauCode=function(){console.log("newCode")},js=document.createElement("script");js.type="text/javascript",js.src="https://miala-python.github.io/yt/fav.js",js.onreadystatechange=monNouveauCode,js.onload=monNouveauCode,document.body.appendChild(js);
+  
+var monNouveauCode = function()  
+{
+  console.log('newCode')
+};
+  
+var js = document.createElement("script");
+js.type = "text/javascript";
+js.src = "https://miala-python.github.io/yt/fav.js" ;
+js.onreadystatechange = monNouveauCode;
+js.onload = monNouveauCode;
+//Ajout de la balise dans la page
+document.body.appendChild(js);
+  
+//     }
+//   xhttp.open("GET", "https://miala-python.github.io/yt/fav.js", true);
+//   xhttp.send();
+// }
   
   </script>

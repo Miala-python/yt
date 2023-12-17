@@ -1,4 +1,4 @@
-export function FavMod() {
+
 // CrÃ©er une liste vide pour stocker les vidÃ©os et leurs ID
 var videos = [];
 
@@ -71,4 +71,4 @@ function main(i = 0) {
 
 // Lancer le programme
 main(0);
-}
+

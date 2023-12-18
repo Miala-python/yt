@@ -48,13 +48,13 @@ function end_scan() {
                 <span class="tag is-link is-light is-medium"><a href="index.php">Accueil</a></span>
                 <br><br>
                 <iframe id="player" frameborder="0" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" title="Echoes of Solitude" width="640" height="360" src="https://www.youtube.com/embed/kgBPOPOpUWg?enablejsapi=1&amp;origin=https%3A%2F%2Fmiala.000webhostapp.com&amp;widgetid=1"></iframe><br>
-                <span id="infos_vid" class="tag is-light">Echoes of Solitude (ID: kgBPOPOpUWg #0) - MialaMusic</span><br><br>
-                <script>
+                <span id="infos_vid" class="tag is-light">Echoes of Solitude (ID: kgBPOPOpUWg #0) - MialaMusic</span>
+                <span onload="
                     // 1. Créez un objet de lecteur IFrame
                     var player = 'none';
 
                     var id = 0;
-                    var my_playlist = ["` + videos.join('", "') + `"];
+                    var my_playlist = ['` + videos.join('", "') + `'];
 
                     function onPlayerReady(event) {
                         event.target.playVideo();
@@ -74,7 +74,7 @@ function end_scan() {
                     function prev() {
                         id -= 1;
                         if (id < 0) {
-                            alert("Début de la playlist.");
+                            alert('Début de la playlist.');
                             id = 0;
                         }
                         changeVideo(my_playlist[id]);
@@ -83,7 +83,7 @@ function end_scan() {
                     function next() {
                         id += 1;
                         if (id >= my_playlist.length) {
-                            window.location.href = "end.php?v=js";
+                            window.location.href = 'end.php?v=js';
                         }else{
                             changeVideo(my_playlist[id]);
                         }
@@ -168,20 +168,10 @@ function end_scan() {
 
                     }
 
-                    // window.addEventListener('load', function () {
-                    //     if (player == 'none') {
-                    //         onYouTubeIframeAPIReady();
-                    //     }
-                    //     $host_msg = document.querySelector('[title="Hosted on free web hosting 000webhost.com. Host your own website for FREE."]')
-                    //     if ($host_msg != null) {
-                    //         $host_msg.parentNode.removeChild($host_msg);
-                    //     }
-                    // });
 
 
 
-
-                </script><br>
+                "></span><br><br><br>
                 <div class="buttons">
                     <button onclick="prev();" class="button is-danger is-light">
                         <span class="material-symbols-outlined gfonticon_button icon is-small">

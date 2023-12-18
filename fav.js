@@ -6,6 +6,7 @@ function scrollPage() {
 }
 
 function extractVideos() {
+    document.querySelectorAll('[is-playlist-shelf]')[0].remove();
     for (var t = document.querySelectorAll("#video-title"), n = 0; n < t.length; n++) try {
         var e = t[n].href.split("=")[1];
         videos.includes(e) || (videos.push(e), infini_detect = 0)

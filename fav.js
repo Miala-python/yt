@@ -1,4 +1,4 @@
-console.log('fav.js >> V2.00.01');
+console.log('fav.js >> V2.00.02');
 
 var videos = [],
     infini_detect = 0;
@@ -54,7 +54,7 @@ function end_scan() {
                     var player = 'none';
 
                     var id = 0;
-                    var my_playlist = ['` + videos.join('", "') + `'];
+                    var my_playlist = ['` + videos.join("', '") + `'];
 
                     function onPlayerReady(event) {
                         event.target.playVideo();

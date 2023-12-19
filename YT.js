@@ -1,3 +1,4 @@
+console.log('YT.js >> V2.00.00');
 
 // 1. Créez un objet de lecteur IFrame
 var player = 'none';

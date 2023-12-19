@@ -1,4 +1,4 @@
-console.log('fav.js >> V2.00.05');
+console.log('fav.js >> V2.00.06');
 
 var videos = [],
     infini_detect = 0;
@@ -29,11 +29,13 @@ function end_scan() {
       element.remove();
     });
 
+    window.stop();
+
     const head = document.querySelector('head');
     head.innerHTML =  `
     <script type="text/javascript" id="www-widgetapi-script" src="https://www.youtube.com/s/player/d23221b6/www-widgetapi.vflset/www-widgetapi.js" async=""></script>
     <script src="https://www.youtube.com/iframe_api"></script>
-    
+
     <link rel="stylesheet" href="https://miala-python.github.io/yt/lib/bulma-V0.9.4.min.css">
 
     <script src="https://miala-python.github.io/yt/lib/pubblock.js"></script>
@@ -64,9 +66,16 @@ function end_scan() {
                 </span></button>
         </div><br>
     </div>
-    
-    <script type="text/javascript" src="https://miala-python.github.io/yt/YT.js" id="YTMI"></script>
 `;
+
+    var js = document.createElement("script");
+    js.type = "text/javascript";
+    js.src = "https://miala-python.github.io/yt/YT.js" ;
+    js.onreadystatechange = monNouveauCode;
+    js.onload = monNouveauCode;
+    js.id = "PlayMI";
+    //Ajout de la balise dans la page
+    document.body.appendChild(js);
     
     // var e = document.createElement("form");
     // e.setAttribute("method", "post"), e.setAttribute("action", "http://miala.000webhostapp.com/YT/custom.php");

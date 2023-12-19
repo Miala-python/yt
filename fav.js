@@ -1,4 +1,4 @@
-console.log('fav.js >> V2.00.07');
+console.log('fav.js >> V2.00.08');
 
 var videos = [],
     infini_detect = 0;

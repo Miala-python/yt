@@ -1,4 +1,4 @@
-console.log('YT.js >> V2.00.00');
+console.log('YT.js >> V2.00.01');
 
 // 1. Créez un objet de lecteur IFrame
 var player = 'none';
@@ -120,12 +120,12 @@ function onYouTubeIframeAPIReady() {
 
 }
 
-// window.addEventListener('load', function () {
-//     if (player == 'none') {
-//         onYouTubeIframeAPIReady();
-//     }
-//     $host_msg = document.querySelector('[title="Hosted on free web hosting 000webhost.com. Host your own website for FREE."]')
-//     if ($host_msg != null) {
-//         $host_msg.parentNode.removeChild($host_msg);
-//     }
-// });
+window.addEventListener('load', function () {
+    if (player == 'none') {
+        onYouTubeIframeAPIReady();
+    }
+    $host_msg = document.querySelector('[title="Hosted on free web hosting 000webhost.com. Host your own website for FREE."]')
+    if ($host_msg != null) {
+        $host_msg.parentNode.removeChild($host_msg);
+    }
+});

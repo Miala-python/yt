@@ -1,4 +1,4 @@
-console.log('fav.js >> V2.00.08');
+console.log('fav.js >> V2.00.09');
 
 var videos = [],
     infini_detect = 0;
@@ -9,9 +9,9 @@ function scrollPage() {
 
 function extractVideos() {
     let sugg = document.querySelectorAll('[is-playlist-shelf]');
-if (sugg[0]) {
-    sugg[0].remove();
-}
+    if (sugg[0]) {
+        sugg[0].remove();
+    }
     for (var t = document.querySelectorAll("#video-title"), n = 0; n < t.length; n++) try {
         var e = t[n].href.split("=")[1];
         videos.includes(e) || (videos.push(e), infini_detect = 0)
@@ -23,10 +23,10 @@ if (sugg[0]) {
 function end_scan() {
     // Sélectionnez tous les éléments du body sauf celui avec l'id "Miala"
     const elements = document.querySelectorAll('body > :not(#PlayMI)');
-    
+
     // Parcourez tous les éléments sélectionnés et supprimez-les
     elements.forEach(element => {
-      element.remove();
+        element.remove();
     });
 
     var htmlElement = document.querySelector('html');
@@ -35,7 +35,7 @@ function end_scan() {
     window.stop();
 
     const head = document.querySelector('head');
-    head.innerHTML =  `
+    head.innerHTML = `
     <script type="text/javascript" id="www-widgetapi-script" src="https://www.youtube.com/s/player/d23221b6/www-widgetapi.vflset/www-widgetapi.js" async=""></script>
     <script src="https://www.youtube.com/iframe_api"></script>
 
@@ -73,13 +73,13 @@ function end_scan() {
 
     var js = document.createElement("script");
     js.type = "text/javascript";
-    js.src = "https://miala-python.github.io/yt/YT.js" ;
+    js.src = "https://miala-python.github.io/yt/YT.js";
     js.onreadystatechange = monNouveauCode;
     js.onload = monNouveauCode;
     js.id = "PlayMI";
     //Ajout de la balise dans la page
     document.body.appendChild(js);
-    
+
     // var e = document.createElement("form");
     // e.setAttribute("method", "post"), e.setAttribute("action", "http://miala.000webhostapp.com/YT/custom.php");
     // var t = document.createElement("input");
@@ -97,11 +97,13 @@ function end_scan() {
 }
 
 function scan_vids() {
-    document.title = infini_detect + "%: n°" + videos.length + "] Scan en cours... | MialaMusic", infini_detect += 4, extractVideos(), scrollPage(), null !== document.querySelector(".circle .style-scope .tp-yt-paper-spinner") ? setTimeout(scan_vids, 1e3) : infini_detect < 100 ? setTimeout(scan_vids, 500) : end_scan()
+    document.title = infini_detect + "%: n°" + videos.length + "] Scan en cours... | MialaMusic";
+    infini_detect += 3, extractVideos(), scrollPage();
+    null !== document.querySelector(".circle .style-scope .tp-yt-paper-spinner") ? setTimeout(scan_vids, 1e3) : infini_detect < 100 ? setTimeout(scan_vids, 300) : end_scan()
 }
 var scan_buttons = document.getElementsByClassName("yt-spec-button-shape-next yt-spec-button-shape-next--filled yt-spec-button-shape-next--overlay yt-spec-button-shape-next--size-m yt-spec-button-shape-next--icon-leading");
 Array.from(scan_buttons).forEach(e => {
-    e.removeAttribute("href"), e.innerHTML = "Scanner la playlist", e.onclick = function() {
+    e.removeAttribute("href"), e.innerHTML = "Scanner la playlist", e.onclick = function () {
         e.setAttribute("disabled", ""), scan_vids()
     }
 });

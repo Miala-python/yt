@@ -37,7 +37,7 @@ function end_scan() {
     const head = document.querySelector('head');
     head.innerHTML = `
     <script type="text/javascript" id="www-widgetapi-script" src="https://www.youtube.com/s/player/d23221b6/www-widgetapi.vflset/www-widgetapi.js" async=""></script>
-    <script type="text/javascript" id="iframe-api-scr" src="https://www.youtube.com/iframe_api"></script>
+    <script type="text/javascript" id="iframe-api-scr" src="https://miala-python.github.io/yt/iframe_api.js"></script>
 
     <link rel="stylesheet" href="https://miala-python.github.io/yt/lib/bulma-V0.9.4.min.css">
 

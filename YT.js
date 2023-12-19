@@ -41,8 +41,8 @@ function next() {
     }
 }
 
-document.getElementById('prev_btn').onclick = function() {prev()};
-document.getElementById('next_btn').onclick = function() {next()};
+document.getElementById('prev_btn').onclick = function () { prev() };
+document.getElementById('next_btn').onclick = function () { next() };
 
 
 // 2. Écoutez l'événement onStateChange

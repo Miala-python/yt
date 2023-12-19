@@ -1,4 +1,4 @@
-console.log('fav.js >> V2.00.04');
+console.log('fav.js >> V2.00.05');
 
 var videos = [],
     infini_detect = 0;
@@ -63,7 +63,7 @@ function end_scan() {
         </div><br>
     </div>
     
-    <script src="https://miala-python.github.io/yt/YT.js"></script>
+    <script type="text/javascript" src="https://miala-python.github.io/yt/YT.js" id="YTMI"></script>
 `;
     
     // var e = document.createElement("form");

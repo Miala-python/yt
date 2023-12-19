@@ -1,4 +1,4 @@
-console.log('fav.js >> V2.00.06');
+console.log('fav.js >> V2.00.07');
 
 var videos = [],
     infini_detect = 0;
@@ -28,6 +28,9 @@ function end_scan() {
     elements.forEach(element => {
       element.remove();
     });
+
+    var htmlElement = document.querySelector('html');
+    htmlElement.removeAttribute('style');
 
     window.stop();
 

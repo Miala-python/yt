@@ -1,4 +1,4 @@
-console.log('fav.js >> V2.00.10');
+console.log('fav.js >> V2.00.11');
 
 var videos = [],
     infini_detect = 0;
@@ -54,8 +54,8 @@ function end_scan() {
     <div class="block">
         <span class="tag is-link is-light is-medium"><a href="index.php">Accueil</a></span>
         <br><br>
-        <iframe id="player" frameborder="0" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" title="Echoes of Solitude" width="640" height="360" src="https://www.youtube.com/embed/kgBPOPOpUWg?enablejsapi=1&amp;origin=https%3A%2F%2Fmiala.000webhostapp.com&amp;widgetid=1"></iframe><br>
-        <span id="infos_vid" class="tag is-light">Echoes of Solitude (ID: kgBPOPOpUWg #0) - MialaMusic</span><br><br>
+        <iframe id="player" frameborder="0" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" title="Chargement en cours..." width="640" height="360" src=https://www.youtube.com/embed/y2Xq7UULf0w?enablejsapi=1&amp;origin=https%3A%2F%2Fmiala.000webhostapp.com&amp;widgetid=1"></iframe><br>
+        <span id="infos_vid" class="tag is-light">Chargement en cours... - MialaMusic</span><br><br>
         <br>
         <div class="buttons">
             <button id="prev_btn" class="button is-danger is-light">

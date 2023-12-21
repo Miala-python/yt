@@ -1,4 +1,4 @@
-
+console.log('iframe_api.js');
 var scriptUrl = 'https:\/\/www.youtube.com\/s\/player\/d23221b6\/www-widgetapi.vflset\/www-widgetapi.js';
 try {
     var ttPolicy = window.trustedTypes.createPolicy("youtube-widget-api", { createScriptURL: function (x) { return x } });

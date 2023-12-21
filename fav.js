@@ -123,7 +123,9 @@ function scan_vids() {
 var scan_buttons = document.getElementsByClassName("yt-spec-button-shape-next yt-spec-button-shape-next--filled yt-spec-button-shape-next--overlay yt-spec-button-shape-next--size-m yt-spec-button-shape-next--icon-leading");
 Array.from(scan_buttons).forEach(e => {
     e.removeAttribute("href"), e.innerHTML = "Scanner la playlist", e.onclick = function () {
-        e.setAttribute("disabled", ""), scan_vids()
+        e.setAttribute("disabled", "");
+        e.innerHTML = "Scan en cours...";
+        scan_vids();
     }
 });
 

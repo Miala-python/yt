@@ -1,4 +1,4 @@
-console.log('YT.js >> V2.00.04');
+console.log('YT.js >> V2.00.05');
 
 // 1. Créez un objet de lecteur IFrame
 var player = 'none';
@@ -129,8 +129,10 @@ function onYouTubeIframeAPIReady() {
 
 function waitLoad() {
     if (YT.loaded === 1) {
+        console.log('YTiframe API ready !');
         onYouTubeIframeAPIReady();
     } else {
+        console.log('Wait for YTiframe API...');
       // Appel récursif avec un délai d'attente de 1 seconde
       setTimeout(function() {
         waitLoad();

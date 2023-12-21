@@ -1,4 +1,4 @@
-console.log('fav.js >> V2.00.13');
+console.log('fav.js >> V2.00.14');
 
 var videos = [],
     infini_detect = 0;
@@ -45,7 +45,13 @@ function end_scan() {
 
     const body = document.querySelector('body');
 
-    var scr_list  = [
+    var mpl = document.createElement("p");
+    mpl.setAttribute("type", "hidden");
+    mpl.setAttribute("id", "my_playlist");
+    mpl.innerText = videos.join(";");
+    body.appendChild(mpl);
+
+    var scr_list = [
         "https://www.youtube.com/s/player/d23221b6/www-widgetapi.vflset/www-widgetapi.js",
         "https://miala-python.github.io/yt/iframe_api.js",
         "https://miala-python.github.io/yt/lib/jquery.js",
@@ -56,7 +62,7 @@ function end_scan() {
         let js = document.createElement("script");
         js.type = "text/javascript";
         js.src = element;
-        document.body.appendChild(js);
+        body.appendChild(js);
     });
 
 

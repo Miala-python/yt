@@ -1,4 +1,4 @@
-console.log('YT.js >> V2.00.06');
+console.log('YT.js >> V2.00.07');
 
 // 1. Créez un objet de lecteur IFrame
 var player = 'none';
@@ -7,6 +7,7 @@ var id = 0;
 var my_playlist = document.getElementById('my_playlist').innerText.split('&list;');
 
 function onPlayerReady(event) {
+    console.log(event, ': Player Ready => ', player);
     event.target.playVideo();
     player.playVideo();
 

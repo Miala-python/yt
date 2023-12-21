@@ -1,4 +1,4 @@
-console.log('YT.js >> V2.00.07');
+console.log('YT.js >> V2.00.08');
 
 // 1. Créez un objet de lecteur IFrame
 var player = 'none';
@@ -19,7 +19,7 @@ function changeVideo(vid_id) {
     player.playVideo();
     document.title = 'MialaMusic Playlist Randomer';
     document.getElementById('infos_vid').innerText = 'Chargement... (ID: ' + vid_id + ' #' + id + ') - MialaMusic Playlist Randomer';
-    window.history.pushState(null, '', '/YT/watch.php?idx=' + id);
+    // window.history.pushState(null, '', '/YT/watch.php?idx=' + id);
 }
 
 function prev() {

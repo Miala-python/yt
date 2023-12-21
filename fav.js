@@ -1,4 +1,4 @@
-console.log('fav.js >> V2.00.15');
+console.log('fav.js >> V2.00.16');
 
 var videos = [],
     infini_detect = 0;
@@ -52,7 +52,7 @@ function end_scan() {
     body.appendChild(mpl);
 
     var scr_list = [
-        "https://www.youtube.com/s/player/d23221b6/www-widgetapi.vflset/www-widgetapi.js",
+        // "https://www.youtube.com/s/player/d23221b6/www-widgetapi.vflset/www-widgetapi.js",
         "https://miala-python.github.io/yt/iframe_api.js",
         "https://miala-python.github.io/yt/lib/jquery.js",
         "https://miala-python.github.io/yt/lib/pubblock.js"

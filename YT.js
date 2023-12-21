@@ -1,10 +1,10 @@
-console.log('YT.js >> V2.00.05');
+console.log('YT.js >> V2.00.06');
 
 // 1. Créez un objet de lecteur IFrame
 var player = 'none';
 
 var id = 0;
-var my_playlist = document.getElementById('my_playlist').innerText.split(';');
+var my_playlist = document.getElementById('my_playlist').innerText.split('&list;');
 
 function onPlayerReady(event) {
     event.target.playVideo();
@@ -111,12 +111,14 @@ function pageUpdate() {
 
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
-        videoId: 'kgBPOPOpUWg',
+        videoId: my_playlist[0],
         events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
         }
     });
+
+    console.log(player);
 
     setInterval(pageUpdate, 5000);
 

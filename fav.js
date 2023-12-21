@@ -1,4 +1,4 @@
-console.log('fav.js >> V2.00.12');
+console.log('fav.js >> V2.00.13');
 
 var videos = [],
     infini_detect = 0;
@@ -44,17 +44,30 @@ function end_scan() {
     <link rel="stylesheet" href="https://miala-python.github.io/yt/lib/outlined.icon.fonts.google.css"> <!-- Copyright Google - All right reserved -->`
 
     const body = document.querySelector('body');
+
+    var scr_list  = [
+        "https://www.youtube.com/s/player/d23221b6/www-widgetapi.vflset/www-widgetapi.js",
+        "https://miala-python.github.io/yt/iframe_api.js",
+        "https://miala-python.github.io/yt/lib/jquery.js",
+        "https://miala-python.github.io/yt/lib/pubblock.js"
+    ];
+
+    scr_list.forEach(element => {
+        let js = document.createElement("script");
+        js.type = "text/javascript";
+        js.src = element;
+        document.body.appendChild(js);
+    });
+
+
     body.innerHTML += `
 
     <div class="block">
-        <script type="text/javascript" id="www-widgetapi-script" src="https://www.youtube.com/s/player/d23221b6/www-widgetapi.vflset/www-widgetapi.js" async=""></script>
-        <script type="text/javascript" id="iframe-api-scr" src="https://miala-python.github.io/yt/iframe_api.js"></script>
-        <script type="text/javascript" src="https://miala-python.github.io/yt/lib/jquery.js"></script>
-        <script type="text/javascript" src="https://miala-python.github.io/yt/lib/pubblock.js"></script>
 
         <span class="tag is-link is-light is-medium"><a href="index.php">Accueil</a></span>
         <br><br>
-        <iframe id="player" frameborder="0" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" title="Chargement en cours..." width="640" height="360" src=https://www.youtube.com/embed/y2Xq7UULf0w?enablejsapi=1&amp;origin=https%3A%2F%2Fmiala.000webhostapp.com&amp;widgetid=1"></iframe><br>
+        <iframe id="player" frameborder="0" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" title="Chargement en cours..." width="640" height="360" 
+            src=https://www.youtube.com/embed/IkMx-PY6XZY?enablejsapi=1&amp;origin=https%3A%2F%2Fmiala.000webhostapp.com&amp;widgetid=1"></iframe><br>
         <span id="infos_vid" class="tag is-light">Chargement en cours... - MialaMusic</span><br><br>
         <br>
         <div class="buttons">

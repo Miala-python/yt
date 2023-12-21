@@ -4,7 +4,7 @@ console.log('YT.js >> V2.00.03');
 var player = 'none';
 
 var id = 0;
-var my_playlist = ["` + videos.join('", "') + `"];
+var my_playlist = document.getElementById('my_playlist').innerText.split(';');
 
 function onPlayerReady(event) {
     event.target.playVideo();

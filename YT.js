@@ -122,12 +122,10 @@ function onYouTubeIframeAPIReady() {
 
 }
 
-document.getElementById('player').addEventListener('load', function () {
-    if (player == 'none') {
-        onYouTubeIframeAPIReady();
-    }
+while (YT.loading !== 0) {
     // $host_msg = document.querySelector('[title="Hosted on free web hosting 000webhost.com. Host your own website for FREE."]')
     // if ($host_msg != null) {
     //     $host_msg.parentNode.removeChild($host_msg);
     // }
-});
+};
+onYouTubeIframeAPIReady();

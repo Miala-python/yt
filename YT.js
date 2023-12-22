@@ -1,4 +1,4 @@
-console.log('YT.js >> V2.00.11');
+console.log('YT.js >> V2.00.12');
 
 // 1. Créez un objet de lecteur IFrame
 var player = 'none';
@@ -36,6 +36,7 @@ function next() {
         // window.location.href = "end.php?v=js";
         window.stop();
         alert("Fin de la playlist.");
+        window.location.href = "#";
     } else {
         changeVideo(my_playlist[id]);
     }
@@ -108,8 +109,8 @@ function pageUpdate() {
 
     }
 }
-    // <iframe id="player" frameborder="0" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" title="Chargement en cours..." width="640" height="360" 
-    // src=https://www.youtube.com/embed/IkMx-PY6XZY?enablejsapi=1&amp;origin=https%3A%2F%2Fmiala.000webhostapp.com&amp;widgetid=1"></iframe>
+// <iframe id="player" frameborder="0" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" title="Chargement en cours..." width="640" height="360" 
+// src=https://www.youtube.com/embed/IkMx-PY6XZY?enablejsapi=1&amp;origin=https%3A%2F%2Fmiala.000webhostapp.com&amp;widgetid=1"></iframe>
 
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
@@ -117,8 +118,8 @@ function onYouTubeIframeAPIReady() {
         playerVars: { 'autoplay': 1, 'picture-in-picture': 1 },
         events: {
             'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange,
-            'onError': next
+            'onStateChange': onPlayerStateChange
+            // 'onError': next
         }
     });
 
@@ -134,7 +135,7 @@ function onYouTubeIframeAPIReady() {
 // }
 
 function waitLoad() {
-    if (player != 'none'){
+    if (player != 'none') {
         return 'Player already created';
     }
     try {

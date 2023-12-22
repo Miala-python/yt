@@ -4,9 +4,9 @@ try {
     var ttPolicy = window.trustedTypes.createPolicy("youtube-widget-api", { createScriptURL: function (x) { return x } });
     scriptUrl = ttPolicy.createScriptURL(scriptUrl)
 } catch (e) {}
-var YT = none;
+var YT; // = none
 if (!window["YT"]) YT = { loading: 0, loaded: 0 };
-var YTConfig = none;
+var YTConfig; // = none
 if (!window["YTConfig"]) YTConfig = { "host": "https://www.youtube.com" };
 if (!YT.loading) {
     // console.log('¤C2');

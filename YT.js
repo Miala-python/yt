@@ -1,4 +1,4 @@
-console.log('YT.js >> V2.00.08');
+console.log('YT.js >> V2.00.09');
 
 // 1. Créez un objet de lecteur IFrame
 var player = 'none';
@@ -10,7 +10,6 @@ function onPlayerReady(event) {
     console.log(event, ': Player Ready => ', player);
     event.target.playVideo();
     player.playVideo();
-
 }
 
 function changeVideo(vid_id) {
@@ -131,16 +130,25 @@ function onYouTubeIframeAPIReady() {
 // }
 
 function waitLoad() {
-    if (YT.loaded === 1) {
-        console.log('YTiframe API ready !');
-        onYouTubeIframeAPIReady();
-    } else {
-        console.log('Wait for YTiframe API...');
-      // Appel récursif avec un délai d'attente de 1 seconde
-      setTimeout(function() {
-        waitLoad();
-      }, 1000);
+    try {
+
+        if (YT.loaded === 1) {
+            console.log('YTiframe API ready !');
+            onYouTubeIframeAPIReady();
+        } else {
+            console.log('Wait for YTiframe API...');
+            // Appel récursif avec un délai d'attente de 1 seconde
+            setTimeout(function () {
+                waitLoad();
+            }, 1000);
+        }
+
+    } catch (error) {
+        console.log('Wait for iframe_api.js run...');
+        setTimeout(function () {
+            waitLoad();
+        }, 2000);
     }
-  }
-  
+}
+
 waitLoad()

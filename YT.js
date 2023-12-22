@@ -1,4 +1,4 @@
-console.log('YT.js >> V2.00.10');
+console.log('YT.js >> V2.00.11');
 
 // 1. Créez un objet de lecteur IFrame
 var player = 'none';
@@ -134,7 +134,7 @@ function onYouTubeIframeAPIReady() {
 // }
 
 function waitLoad() {
-    if (player == 'none'){
+    if (player != 'none'){
         return 'Player already created';
     }
     try {

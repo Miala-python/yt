@@ -1,4 +1,4 @@
-console.log('YT.js >> V2.00.09');
+console.log('YT.js >> V2.00.10');
 
 // 1. Créez un objet de lecteur IFrame
 var player = 'none';
@@ -108,13 +108,17 @@ function pageUpdate() {
 
     }
 }
+    // <iframe id="player" frameborder="0" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" title="Chargement en cours..." width="640" height="360" 
+    // src=https://www.youtube.com/embed/IkMx-PY6XZY?enablejsapi=1&amp;origin=https%3A%2F%2Fmiala.000webhostapp.com&amp;widgetid=1"></iframe>
 
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
         videoId: my_playlist[0],
+        playerVars: { 'autoplay': 1, 'picture-in-picture': 1 },
         events: {
             'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
+            'onStateChange': onPlayerStateChange,
+            'onError': next
         }
     });
 
@@ -130,11 +134,15 @@ function onYouTubeIframeAPIReady() {
 // }
 
 function waitLoad() {
+    if (player == 'none'){
+        return 'Player already created';
+    }
     try {
 
         if (YT.loaded === 1) {
             console.log('YTiframe API ready !');
             onYouTubeIframeAPIReady();
+            return 'Player created';
         } else {
             console.log('Wait for YTiframe API...');
             // Appel récursif avec un délai d'attente de 1 seconde
@@ -151,4 +159,4 @@ function waitLoad() {
     }
 }
 
-waitLoad()
+console.log(waitLoad());

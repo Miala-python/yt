@@ -1,4 +1,4 @@
-console.log('fav.js >> V2.00.21');
+console.log('fav.js >> V2.00.22');
 
 function run() {
 
@@ -51,7 +51,7 @@ function run() {
         var mpl = document.createElement("p");
         mpl.setAttribute("class", "is-hidden");
         mpl.setAttribute("id", "my_playlist");
-        mpl.innerText = videos.join(";").replace(/&list/, "");
+        mpl.innerText = videos.join(";").replace(/&list/gi, "");
         body.appendChild(mpl);
 
         var scr_list = [

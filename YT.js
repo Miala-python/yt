@@ -1,10 +1,25 @@
-console.log('YT.js >> V2.00.12');
+console.log('YT.js >> V2.00.13');
 
 // 1. Créez un objet de lecteur IFrame
 var player = 'none';
 
 var id = 0;
-var my_playlist = document.getElementById('my_playlist').innerText.split('&list;');
+
+var currentUrl = window.location.href;
+var url = new URL(currentUrl);
+var params = new URLSearchParams(url.search);
+var listValue = params.get("list");
+
+var my_playlist_txt = document.getElementById('my_playlist').innerText;
+var my_playlist = my_playlist_txt.split(';');
+
+if (my_playlist.length > 1) {
+    var reponse = confirm("Lecture de la playlist en mode aléatoire ?");
+
+    if (reponse) {
+        my_playlist = shuffleList(my_playlist);
+    } 
+}
 
 function onPlayerReady(event) {
     console.log(event, ': Player Ready => ', player);
@@ -36,7 +51,7 @@ function next() {
         // window.location.href = "end.php?v=js";
         window.stop();
         alert("Fin de la playlist.");
-        window.location.href = "#";
+        window.location.href = "https://miala.000webhostapp.com/YT?list=" + listValue;
     } else {
         changeVideo(my_playlist[id]);
     }

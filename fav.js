@@ -1,4 +1,4 @@
-console.log('fav.js >> V2.00.18');
+console.log('fav.js >> V2.00.19');
 
 var videos = [],
     infini_detect = 0;
@@ -48,7 +48,7 @@ function end_scan() {
     var mpl = document.createElement("p");
     mpl.setAttribute("class", "is-hidden");
     mpl.setAttribute("id", "my_playlist");
-    mpl.innerText = videos.join(";");
+    mpl.innerText = videos.replace(/&list/, "").join(";");
     body.appendChild(mpl);
 
     var scr_list = [

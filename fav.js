@@ -1,4 +1,7 @@
-console.log('fav.js >> V2.00.19');
+var ver = 'fav.js >> V2.00.20';
+
+function run() {
+
 
 var videos = [],
     infini_detect = 0;
@@ -48,7 +51,7 @@ function end_scan() {
     var mpl = document.createElement("p");
     mpl.setAttribute("class", "is-hidden");
     mpl.setAttribute("id", "my_playlist");
-    mpl.innerText = videos.replace(/&list/, "").join(";");
+    mpl.innerText = videos.join(";").replace(/&list/, "");
     body.appendChild(mpl);
 
     var scr_list = [
@@ -130,8 +133,17 @@ Array.from(scan_buttons).forEach(e => {
     }
 });
 
+}
 
+console.log(ver);
+setTimeout(function() {
+    console.log(ver);
+    window.addEventListener('load', function() {
+        run();
+    });
+}, 1000)
 
+location.reload();
 
 
 

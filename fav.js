@@ -141,7 +141,7 @@ setTimeout(function() {
     window.addEventListener('load', function() {
         run();
     });
-}, 1000)
+}, 2000);
 
 location.reload();
 

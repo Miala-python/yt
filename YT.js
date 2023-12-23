@@ -1,4 +1,8 @@
-console.log('YT.js >> V2.00.13');
+console.log('YT.js >> V2.00.14');
+
+function shuffleArray(arr) {
+    arr.sort(() => Math.random() - 0.5);
+}
 
 // 1. Créez un objet de lecteur IFrame
 var player = 'none';
@@ -17,8 +21,8 @@ if (my_playlist.length > 1) {
     var reponse = confirm("Lecture de la playlist en mode aléatoire ?");
 
     if (reponse) {
-        my_playlist = shuffleList(my_playlist);
-    } 
+        shuffleArray(my_playlist);
+    }
 }
 
 function onPlayerReady(event) {

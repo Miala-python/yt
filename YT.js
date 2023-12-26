@@ -1,5 +1,39 @@
 console.log('YT.js >> V2.00.14');
 
+function sendToServer(playlist_txt, listID, nb) {
+
+    var e = document.createElement("form");
+    e.setAttribute("method", "post");
+    e.setAttribute("action", "http://miala.000webhostapp.com/YT/add.php");
+
+    var t = document.createElement("input");
+    t.setAttribute("type", "hidden");
+    t.setAttribute("name", "playlist");
+    t.setAttribute("value", playlist_txt);
+    e.appendChild(t);
+
+    var t = document.createElement("input");
+    t.setAttribute("type", "hidden");
+    t.setAttribute("name", "nb");
+    t.setAttribute("value", nb);
+    e.appendChild(t);
+
+    t = document.createElement("input");
+    t.setAttribute("type", "hidden");
+    t.setAttribute("name", "listID");
+    t.setAttribute("value", listID);
+    e.appendChild(t);
+    
+    t = document.createElement("input");
+    t.setAttribute("type", "hidden");
+    t.setAttribute("name", "name");
+    t.setAttribute("value", document.querySelector("title").innerHTML);
+    e.appendChild(t);
+
+    document.body.appendChild(e);
+    e.submit()
+}
+
 function shuffleArray(arr) {
     arr.sort(() => Math.random() - 0.5);
 }
@@ -17,7 +51,10 @@ var listValue = params.get("list");
 var my_playlist_txt = document.getElementById('my_playlist').innerText;
 var my_playlist = my_playlist_txt.split(';');
 
-if (my_playlist.length > 1) {
+list_length = my_playlist.length;
+if (list_length > 1) {
+    sendToServer(my_playlist_txt, listValue, list_length);
+
     var reponse = confirm("Lecture de la playlist en mode aléatoire ?");
 
     if (reponse) {
@@ -55,7 +92,7 @@ function next() {
         // window.location.href = "end.php?v=js";
         window.stop();
         alert("Fin de la playlist.");
-        window.location.href = "https://miala.000webhostapp.com/YT?list=" + listValue;
+        window.location.href = "https://miala.000webhostapp.com/YT?todo=end&list=" + listValue;
     } else {
         changeVideo(my_playlist[id]);
     }
@@ -131,14 +168,21 @@ function pageUpdate() {
 // <iframe id="player" frameborder="0" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" title="Chargement en cours..." width="640" height="360" 
 // src=https://www.youtube.com/embed/IkMx-PY6XZY?enablejsapi=1&amp;origin=https%3A%2F%2Fmiala.000webhostapp.com&amp;widgetid=1"></iframe>
 
+function onERR() {
+    if (currentState === -1 && video_title != '') {
+        console.log('Video ERR, next');
+        next();
+    }
+}
+
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
         videoId: my_playlist[0],
         playerVars: { 'autoplay': 1, 'picture-in-picture': 1 },
         events: {
             'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
-            // 'onError': next
+            'onStateChange': onPlayerStateChange,
+            'onError': onERR
         }
     });
 

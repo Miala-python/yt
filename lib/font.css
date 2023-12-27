@@ -1,0 +1,10 @@
+
+
+@font-face {
+  font-family: "MiFont";
+  src: url("MyfontV120-Regular.ttf");
+}
+
+.MiFont {
+  font-family: "MiFont", monospace;
+}

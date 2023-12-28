@@ -7,7 +7,6 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-
 function nomFichierConforme(string $nomFichier): string
 {
     // Étape 1: Échapper les caractères spéciaux
@@ -30,6 +29,12 @@ function nomFichierConforme(string $nomFichier): string
 }
 
 try {
+
+    if (empty($_POST['playlist']) && empty($_POST['nb']) && empty($_POST['listID']) && empty($_POST['name'])){
+        $errorMsg = "Data missing.";
+        trigger_error($errorMsg, E_USER_ERROR);
+        exit;
+    }
 
     $playlist = $_POST['playlist'];
     $pllist_length = $_POST['nb'];
@@ -102,4 +107,5 @@ try {
 
     }
 } catch (\Throwable $th) {
+    var_dump($th);
 }

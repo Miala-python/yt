@@ -2,36 +2,17 @@ console.log('YT.js >> V2.00.14');
 
 function sendToServer(playlist_txt, listID, nb) {
 
-    var e = document.createElement("form");
-    e.setAttribute("method", "post");
-    e.setAttribute("action", "http://miala.000webhostapp.com/YT/add.php");
-
-    var t = document.createElement("input");
-    t.setAttribute("type", "hidden");
-    t.setAttribute("name", "playlist");
-    t.setAttribute("value", playlist_txt);
-    e.appendChild(t);
-
-    var t = document.createElement("input");
-    t.setAttribute("type", "hidden");
-    t.setAttribute("name", "nb");
-    t.setAttribute("value", nb);
-    e.appendChild(t);
-
-    t = document.createElement("input");
-    t.setAttribute("type", "hidden");
-    t.setAttribute("name", "listID");
-    t.setAttribute("value", listID);
-    e.appendChild(t);
-    
-    t = document.createElement("input");
-    t.setAttribute("type", "hidden");
-    t.setAttribute("name", "name");
-    t.setAttribute("value", document.querySelector("title").innerHTML);
-    e.appendChild(t);
-
-    document.body.appendChild(e);
-    e.submit()
+    $.ajax({
+        url: 'http://miala.000webhostapp.com/YT/add.php',
+        type: 'POST',
+        data: 'playlist=' + playlist_txt + '&nb=' + nb + '&listID=' + listID + '&name=' + document.querySelector("title").innerHTML,
+        success: function(response) {
+            console.log(response);
+        },
+        error: function(error) {
+          console.log(error);
+        }
+      });
 }
 
 function shuffleArray(arr) {

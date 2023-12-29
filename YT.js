@@ -1,36 +1,10 @@
-console.log('YT.js >> V2.02.02');
+console.log('YT.js >> V2.02.03');
 
 function sendToServer(playlist_txt, listID, nb) {
 
 
-    const url = 'https://miala.000webhostapp.com/YT/add.php';
-    const headers = {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/x-www-form-urlencoded'
-    };
-
-    const data = {
-        playlist: playlist_txt,
-        nb: nb,
-        listID: listID,
-        name: document.querySelector('title').innerHTML
-    };
-
-    fetch(url, {
-        method: 'POST',
-        headers: headers,
-        body: new URLSearchParams(data).toString()
-    }).then(response => response.text())
-        .then(data => {
-            if (response.ok) {
-                console.log(data);
-            } else {
-                console.error('Error:', response.statusText);
-            }
-        })
-        .catch(error => {
-            console.error('Network error:', error);
-        });
+    window.open(`https://miala.000webhostapp.com/YT/add.php?playlist=${playlist_txt}&nb=${nb}&listID=${listID}&name=${document.querySelector("title").innerHTML}`, "_blank"); //, "width=500,height=500"
+        
 
     // const xhr = new XMLHttpRequest();
     // xhr.open('POST', 'https://miala.000webhostapp.com/YT/add.php');

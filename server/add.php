@@ -105,6 +105,17 @@ try {
 
 
     }
+
+    echo "<!DOCTYPE html>
+    <html>
+    <head>
+    <script>
+    window.close();
+    </script>
+    </head>
+    <body>
+    </body>
+    </html>";
 } catch (\Throwable $th) {
     var_dump($th);
 }

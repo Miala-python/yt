@@ -1,6 +1,6 @@
 <?php
 
-$dir = './db/*.mimuspl';
+$dir = './db/';
 // $files = glob($dir);
 
 $path = $dir . 'index.list';

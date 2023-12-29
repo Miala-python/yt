@@ -9,7 +9,7 @@ if (empty($_GET['list'])):
 else:
 
     $listID = $_GET['list'];
-    $path = './db/' . $listID . '.mimuspl';
+    $path = './db/' . $listID . '.Mpl';
 
     if (!file_exists($path)):
         header('Location: ./index.php?loaderr=nofile');

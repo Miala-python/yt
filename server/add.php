@@ -46,7 +46,7 @@ try {
     if (empty($_POST['name'])){
         $name = "Liste de lecture de longueur:";
     }else{
-        $name = $_POST['name'].trim('- YouTube');
+        $name = str_replace(" - YouTube", "", $_POST['name']);
     }
 
     $name .= ' [' . $pllist_length . ']';

@@ -1,7 +1,10 @@
-console.log('watcher.js >> V2.01.07');
+console.log('watcher.js >> V2.01.08');
 
 // File: Create Watcher Page
 
+function monNouveauCode () {
+    console.log('Mimiala');
+}
 
 var htmlElement = document.querySelector('html');
 htmlElement.removeAttribute('style');

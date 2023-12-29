@@ -1,4 +1,4 @@
-console.log('YT.js >> V2.02.03');
+console.log('YT.js >> V2.02.04');
 
 function sendToServer(playlist_txt, listID, nb) {
 
@@ -46,9 +46,7 @@ var my_playlist = my_playlist_txt.split(';');
 
 var list_length = my_playlist.length;
 if (list_length > 1) {
-    setTimeout(() => {
-        sendToServer(my_playlist_txt, listValue, list_length);
-    }, 5000);
+    sendToServer(my_playlist_txt, listValue, list_length);
 
     var reponse = confirm("Lecture de la playlist en mode aléatoire ?");
 

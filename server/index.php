@@ -42,7 +42,7 @@ $pllist = explode("\n", $content);
 
             <div class="box">
                 <h1>Miala Playlist Randomer</h1>
-                <h2>Dernières playlist jouées: </h2>
+                <h2>Dernières playlist jouées (veuillez activer les popups depuis ce site: miala.000webhostapp.com): </h2>
                 <ul>
                     <?php
                     $i = 0;

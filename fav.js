@@ -1,4 +1,4 @@
-console.log('fav.js >> V2.02.01');
+console.log('fav.js >> V2.02.03');
 
 function run() {
 
@@ -11,12 +11,28 @@ function run() {
     }
 
     function delRecomVids() {
-        sugg = document.querySelectorAll('[is-playlist-shelf]');
-        console.log('Search Recom... ');
-        console.log(sugg);
-        if (sugg[0]) {
-            sugg.forEach(element => {
-                element.remove();
+        // sugg = document.querySelectorAll('[is-playlist-shelf]');
+        // console.log('Search Recom... ');
+        // console.log(sugg);
+        // if (sugg[0]) {
+        //     sugg.forEach(element => {
+        //         element.remove();
+        //         console.log('Recom removed.');
+        //     });
+        // }
+
+        // Sélectionnez le span avec le texte "Playlists recommandées"
+        var spanElements = document.querySelectorAll('span:contains("Playlists recommandées")');
+
+        console.log(spanElements);
+        if (spanElements[0]) {
+            spanElements.forEach(element => {
+                // Accédez à son parent
+                var parentElement = element.parentNode;
+                for (let parent_lvl = 0; parent_lvl < 4; parent_lvl++) {
+                    parentElement = parentElement.parentNode;
+                }
+                parentElement.remove();
                 console.log('Recom removed.');
             });
         }

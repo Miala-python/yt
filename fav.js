@@ -1,4 +1,4 @@
-console.log('fav.js >> V2.01.00');
+console.log('fav.js >> V2.02.00');
 
 function run() {
 
@@ -13,7 +13,9 @@ function run() {
     function extractVideos() {
         let sugg = document.querySelectorAll('[is-playlist-shelf]');
         if (sugg[0]) {
-            sugg[0].remove();
+        sugg.forEach(element => {
+            element.remove();   
+        });
         }
         for (var t = document.querySelectorAll("#video-title"), n = 0; n < t.length; n++) try {
             var e = t[n].href.split("=")[1];

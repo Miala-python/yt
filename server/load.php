@@ -36,6 +36,15 @@ else:
         <p class="is-hidden" id="my_playlist">
             <?php echo $my_playlist; ?>
         </p>
+        <?php
+        if (!empty($_GET['title'])){
+            echo '
+            <p class="is-hidden" id="pl_name">
+                '.$_GET['title'].'
+            </p>';
+        }
+        
+        ?>
 
         </html>
 

@@ -33,7 +33,7 @@ function nomFichierConforme(string $nomFichier): string
 
 try {
 
-    if (empty($_POST['playlist']) || empty($_POST['nb']) || empty($_POST['listID']) || empty($_POST['name'])){
+    if (empty($_POST['playlist']) || empty($_POST['nb']) || empty($_POST['listID'])){
         $errorMsg = "Data Missing.";
         trigger_error($errorMsg, E_USER_ERROR);
         exit;
@@ -42,7 +42,12 @@ try {
     $playlist = $_POST['playlist'];
     $pllist_length = $_POST['nb'];
     $listID = $_POST['listID'];
-    $name = $_POST['name'].trim('- YouTube');
+
+    if (empty($_POST['name'])){
+        $name = "Liste de lecture de longueur:";
+    }else{
+        $name = $_POST['name'].trim('- YouTube');
+    }
 
     $name .= ' [' . $pllist_length . ']';
 

@@ -1,4 +1,4 @@
-console.log('watcher.js >> V2.01.02');
+console.log('watcher.js >> V2.01.07');
 
 // File: Create Watcher Page
 
@@ -40,7 +40,7 @@ body.innerHTML += `
 
 <div class="block">
 <div class="tags are-medium">
-<span class="tag is-primary is-light"><a href="index.php">MialaMusic</a></span>
+<span class="tag is-primary is-light"><a href="https://miala.000webhostapp.com/YT/">Lecteur MiYT</a></span>
 <span class="tag is-light is-danger"><a href="#" onclick="location.reload()">Playlist</a></span>
 <span class="tag is-light is-danger"><a href="https://www.youtube.com/?Mi=Music">YouTube</a></span>
 </div>

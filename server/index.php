@@ -48,7 +48,8 @@ $pllist = explode("\n", $content);
                     $i = 0;
                     foreach ($pllist as $pl) {
                         if ($i % 2 === 1) {
-                            echo '<li><a href="load.php?list=' . $pl . '">' . $pllist[$i - 1] . '</a></li>';
+                            $name = $pllist[$i - 1];
+                            echo '<li><a href="load.php?list=' . $pl . '&title=' . $name . '">' . $name . '</a></li>';
                         }
                         $i += 1;
                     }

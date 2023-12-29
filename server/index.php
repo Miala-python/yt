@@ -59,7 +59,7 @@ $pllist = explode($content, "\n");
             </div>
         </div>
     </div>
-    <iframe width="100%" height="auto" src="https://miala-python.github.io/yt/"></iframe>
+    <iframe width="100%" height="100%" src="https://miala-python.github.io/yt/"></iframe>
 
 </body>
 

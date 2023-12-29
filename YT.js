@@ -1,4 +1,4 @@
-console.log('YT.js >> V2.02.07');
+console.log('YT.js >> V2.02.08');
 
 function sendToServer(playlist_txt, listID, nb) {
 
@@ -44,7 +44,7 @@ function sendToServer(playlist_txt, listID, nb) {
     }
 
     // Soumettez le formulaire dans le popup
-    var popup = window.open('', 'Lecteur MiYT | Connexion au serveur...', 'width=500,height=400');
+    var popup = window.open('', 'Lecteur MiYT | Connexion au serveur...', 'width=7,height=7');
     form.target = 'Lecteur MiYT | Connexion au serveur...';
     popup.document.body.appendChild(form);
     form.submit();

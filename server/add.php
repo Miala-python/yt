@@ -29,7 +29,7 @@ function nomFichierConforme(string $nomFichier): string
 
 try {
 
-    if (empty($_POST['playlist']) && empty($_POST['nb']) && empty($_POST['listID']) && empty($_POST['name'])){
+    if (empty($_POST['playlist']) || empty($_POST['nb']) || empty($_POST['listID']) || empty($_POST['name'])){
         $errorMsg = "Data missing.";
         trigger_error($errorMsg, E_USER_ERROR);
         exit;

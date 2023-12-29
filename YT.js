@@ -1,10 +1,44 @@
-console.log('YT.js >> V2.02.04');
+console.log('YT.js >> V2.02.05');
 
 function sendToServer(playlist_txt, listID, nb) {
 
 
-    window.open(`https://miala.000webhostapp.com/YT/add.php?playlist=${playlist_txt}&nb=${nb}&listID=${listID}&name=${document.querySelector("title").innerHTML}`, "_blank"); //, "width=500,height=500"
-        
+
+    // Créez un formulaire dynamiquement
+    var form = document.createElement('form');
+    form.method = 'POST';
+    form.action = 'https://miala.000webhostapp.com/YT/add.php';
+
+    // Ajoutez les champs et leurs valeurs
+    var champ1 = document.createElement('input');
+    champ1.type = 'hidden';
+    champ1.name = 'playlist';
+    champ1.value = playlist_txt;
+    form.appendChild(champ1);
+
+    var champ2 = document.createElement('input');
+    champ2.type = 'hidden';
+    champ2.name = 'nb';
+    champ2.value = nb;
+    form.appendChild(champ2);
+
+    var champ3 = document.createElement('input');
+    champ3.type = 'hidden';
+    champ3.name = 'listID';
+    champ3.value = listID;
+    form.appendChild(champ3);
+
+    var champ4 = document.createElement('input');
+    champ4.type = 'hidden';
+    champ4.name = 'name';
+    champ4.value = document.querySelector("title").innerHTML;
+    form.appendChild(champ4);
+
+    // Soumettez le formulaire dans le popup
+    var popup = window.open('', 'Lecteur MiYT | Connexion au serveur...', 'width=500,height=400');
+    form.target = 'Lecteur MiYT | Connexion au serveur...';
+    popup.document.body.appendChild(form);
+    form.submit();
 
     // const xhr = new XMLHttpRequest();
     // xhr.open('POST', 'https://miala.000webhostapp.com/YT/add.php');

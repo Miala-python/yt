@@ -3,7 +3,7 @@ console.log('YT.js >> V2.00.14');
 function sendToServer(playlist_txt, listID, nb) {
 
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://miala.000webhostapp.com/YT/add.php');
+    xhr.open('POST', 'https://miala.000webhostapp.com/YT/add.php');
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     const data = `playlist=${playlist_txt}&nb=${nb}&listID=${listID}&name=${document.querySelector("title").innerHTML}`;

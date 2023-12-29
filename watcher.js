@@ -1,4 +1,4 @@
-console.log('watcher.js >> V2.01.01');
+console.log('watcher.js >> V2.01.02');
 
 // File: Create Watcher Page
 
@@ -24,7 +24,8 @@ var scr_list = [
     "https://www.youtube.com/iframe_api",
     // "https://miala-python.github.io/yt/iframe_api.js",
     "https://miala-python.github.io/yt/lib/jquery.js",
-    "https://miala-python.github.io/yt/lib/pubblock.js"
+    "https://miala-python.github.io/yt/lib/pubblock.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/fetch/2.6.0/fetch.min.js"
 ];
 
 scr_list.forEach(element => {

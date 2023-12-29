@@ -1,25 +1,55 @@
-console.log('YT.js >> V2.02.00');
+console.log('YT.js >> V2.02.02');
 
 function sendToServer(playlist_txt, listID, nb) {
 
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'https://miala.000webhostapp.com/YT/add.php');
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-    const data = `playlist=${playlist_txt}&nb=${nb}&listID=${listID}&name=${document.querySelector("title").innerHTML}`;
-    xhr.send(data);
-
-    xhr.onload = function () {
-        if (xhr.status === 200) {
-            console.log(xhr.responseText);
-        } else {
-            console.error('Error:', xhr.statusText);
-        }
+    const url = 'https://miala.000webhostapp.com/YT/add.php';
+    const headers = {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/x-www-form-urlencoded'
     };
 
-    xhr.onerror = function () {
-        console.error('Network error');
+    const data = {
+        playlist: playlist_txt,
+        nb: nb,
+        listID: listID,
+        name: document.querySelector('title').innerHTML
     };
+
+    fetch(url, {
+        method: 'POST',
+        headers: headers,
+        body: new URLSearchParams(data).toString()
+    }).then(response => response.text())
+        .then(data => {
+            if (response.ok) {
+                console.log(data);
+            } else {
+                console.error('Error:', response.statusText);
+            }
+        })
+        .catch(error => {
+            console.error('Network error:', error);
+        });
+
+    // const xhr = new XMLHttpRequest();
+    // xhr.open('POST', 'https://miala.000webhostapp.com/YT/add.php');
+    // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    // const data = `playlist=${playlist_txt}&nb=${nb}&listID=${listID}&name=${document.querySelector("title").innerHTML}`;
+    // xhr.send(data);
+
+    // xhr.onload = function () {
+    //     if (xhr.status === 200) {
+    //         console.log(xhr.responseText);
+    //     } else {
+    //         console.error('Error:', xhr.statusText);
+    //     }
+    // };
+
+    // xhr.onerror = function () {
+    //     console.error('Network error');
+    // };
 
 }
 
@@ -40,9 +70,11 @@ var listValue = params.get("list");
 var my_playlist_txt = document.getElementById('my_playlist').innerHTML;
 var my_playlist = my_playlist_txt.split(';');
 
-list_length = my_playlist.length;
+var list_length = my_playlist.length;
 if (list_length > 1) {
-    sendToServer(my_playlist_txt, listValue, list_length);
+    setTimeout(() => {
+        sendToServer(my_playlist_txt, listValue, list_length);
+    }, 5000);
 
     var reponse = confirm("Lecture de la playlist en mode aléatoire ?");
 

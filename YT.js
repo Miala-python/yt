@@ -1,4 +1,4 @@
-console.log('YT.js >> V2.00.14');
+console.log('YT.js >> V2.02.00');
 
 function sendToServer(playlist_txt, listID, nb) {
 

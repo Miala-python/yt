@@ -1,4 +1,4 @@
-console.log('fav.js >> V2.02.00');
+console.log('fav.js >> V2.02.01');
 
 function run() {
 
@@ -10,19 +10,28 @@ function run() {
         body = document.getElementById("contents"), window.scrollTo(0, body.scrollHeight)
     }
 
-    function extractVideos() {
-        let sugg = document.querySelectorAll('[is-playlist-shelf]');
+    function delRecomVids() {
+        sugg = document.querySelectorAll('[is-playlist-shelf]');
+        console.log('Search Recom... ');
+        console.log(sugg);
         if (sugg[0]) {
-        sugg.forEach(element => {
-            element.remove();   
-        });
+            sugg.forEach(element => {
+                element.remove();
+                console.log('Recom removed.');
+            });
         }
-        for (var t = document.querySelectorAll("#video-title"), n = 0; n < t.length; n++) try {
-            var e = t[n].href.split("=")[1];
-            videos.includes(e) || (videos.push(e), infini_detect = 0)
-        } catch (e) {
-            console.log("VIDEO IGNOREE: "), console.log(t[n])
-        }
+    }
+
+    function extractVideos() {
+        delRecomVids();
+        var ttes_vids = document.querySelectorAll("#video-title");
+        for (ttes_vids, n = 0; n < ttes_vids.length; n++)
+            try {
+                var e = ttes_vids[n].href.split("=")[1];
+                videos.includes(e) || (videos.push(e), infini_detect = 0);
+            } catch (e) {
+                console.log("VIDEO IGNOREE: "), console.log(ttes_vids[n])
+            }
     }
 
     function end_scan() {

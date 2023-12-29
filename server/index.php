@@ -1,15 +1,13 @@
 <?php
 
 $dir = './db/';
-// $files = glob($dir);
-
 $path = $dir . 'index.list';
 
 $handle = fopen($path, "r");
 $content = fread($handle, filesize($path));
 fclose($handle);
 
-$pllist = explode($content, "\n");
+$pllist = explode("\n", $content);
 ?>
 
 
@@ -49,8 +47,8 @@ $pllist = explode($content, "\n");
                     <?php
                     $i = 0;
                     foreach ($pllist as $pl) {
-                        if ($i%2 === 1){
-                        echo '<li><a href="load.php?list=' . $pl . '">' . $pllist[$i-1] . '</a></li>';
+                        if ($i % 2 === 1) {
+                            echo '<li><a href="load.php?list=' . $pl . '">' . $pllist[$i - 1] . '</a></li>';
                         }
                         $i += 1;
                     }

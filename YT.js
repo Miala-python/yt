@@ -2,17 +2,25 @@ console.log('YT.js >> V2.00.14');
 
 function sendToServer(playlist_txt, listID, nb) {
 
-    $.ajax({
-        url: 'http://miala.000webhostapp.com/YT/add.php',
-        type: 'POST',
-        data: 'playlist=' + playlist_txt + '&nb=' + nb + '&listID=' + listID + '&name=' + document.querySelector("title").innerHTML,
-        success: function(response) {
-            console.log(response);
-        },
-        error: function(error) {
-          console.log(error);
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://miala.000webhostapp.com/YT/add.php');
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    const data = `playlist=${playlist_txt}&nb=${nb}&listID=${listID}&name=${document.querySelector("title").innerHTML}`;
+    xhr.send(data);
+
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            console.log(xhr.responseText);
+        } else {
+            console.error('Error:', xhr.statusText);
         }
-      });
+    };
+
+    xhr.onerror = function () {
+        console.error('Network error');
+    };
+
 }
 
 function shuffleArray(arr) {

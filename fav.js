@@ -1,4 +1,4 @@
-console.log('fav.js >> V2.02.03');
+console.log('fav.js >> V2.02.05');
 
 function run() {
 
@@ -22,18 +22,19 @@ function run() {
         // }
 
         // Sélectionnez le span avec le texte "Playlists recommandées"
-        var spanElements = document.querySelectorAll('span:contains("Playlists recommandées")');
+        var spanElements = document.getElementsByTagName('span');
 
-        console.log(spanElements);
         if (spanElements[0]) {
             spanElements.forEach(element => {
-                // Accédez à son parent
-                var parentElement = element.parentNode;
-                for (let parent_lvl = 0; parent_lvl < 4; parent_lvl++) {
-                    parentElement = parentElement.parentNode;
+                if (element.textContent.indexOf('Playlists recommandées') !== -1) {
+                    // Accédez à son parent
+                    var parentElement = element.parentNode;
+                    for (let parent_lvl = 0; parent_lvl < 4; parent_lvl++) {
+                        parentElement = parentElement.parentNode;
+                    }
+                    parentElement.remove();
+                    console.log('Recom removed.');
                 }
-                parentElement.remove();
-                console.log('Recom removed.');
             });
         }
     }

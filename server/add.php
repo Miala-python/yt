@@ -49,7 +49,7 @@ try {
         $name = str_replace(" - YouTube", "", $_POST['name']);
     }
 
-    $name .= ' [' . $pllist_length . ']';
+    $name = trim($name) . ' [' . $pllist_length . ']';
 
     $dir = './db/';
     $path = $dir . 'index.list';

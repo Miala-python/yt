@@ -1,4 +1,4 @@
-console.log('fav.js >> V2.02.05');
+console.log('fav.js >> V2.02.06');
 
 function run() {
 
@@ -25,7 +25,8 @@ function run() {
         var spanElements = document.getElementsByTagName('span');
 
         if (spanElements[0]) {
-            spanElements.forEach(element => {
+            for (var i = 0; i < spanElements.length; i++) {
+                element = spanElements[i];
                 if (element.textContent.indexOf('Playlists recommandées') !== -1) {
                     // Accédez à son parent
                     var parentElement = element.parentNode;
@@ -35,7 +36,7 @@ function run() {
                     parentElement.remove();
                     console.log('Recom removed.');
                 }
-            });
+            };
         }
     }
 

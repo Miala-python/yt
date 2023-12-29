@@ -6,6 +6,10 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+echo "<!DOCTYPE html>
+<html>
+Si une erreur apparaît, veuillez la signaler, fermer cette fenetre puis continuer votre route.";
+
 function nomFichierConforme(string $nomFichier): string
 {
     // Étape 1: Échapper les caractères spéciaux
@@ -30,7 +34,7 @@ function nomFichierConforme(string $nomFichier): string
 try {
 
     if (empty($_POST['playlist']) || empty($_POST['nb']) || empty($_POST['listID']) || empty($_POST['name'])){
-        $errorMsg = "Data missing.";
+        $errorMsg = "Data Missing.";
         trigger_error($errorMsg, E_USER_ERROR);
         exit;
     }
@@ -106,8 +110,7 @@ try {
 
     }
 
-    echo "<!DOCTYPE html>
-    <html>
+    echo "
     <head>
     <script>
     window.close();

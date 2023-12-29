@@ -42,7 +42,7 @@ try {
     $playlist = $_POST['playlist'];
     $pllist_length = $_POST['nb'];
     $listID = $_POST['listID'];
-    $name = $_POST['name'].trim(' - YouTube');
+    $name = $_POST['name'].trim('- YouTube');
 
     $name .= ' [' . $pllist_length . ']';
 

@@ -1,4 +1,4 @@
-console.log('fav.js >> V2.02.06');
+console.log('fav.js >> V2.02.07');
 
 function run() {
 
@@ -113,6 +113,11 @@ function run() {
 var reponse = confirm("Avez-vous actualisé avant de lancer le script ?");
 
 if (reponse) {
+    var pln = document.createElement("p");
+        pln.setAttribute("class", "is-hidden");
+        pln.setAttribute("id", "pl_name");
+        pln.innerText = document.querySelector("title").innerHTML;
+        document.querySelector('html').appendChild(pln);
     run();
 } else {
     alert("Après l'actualisation, veuillez relancer le script.");

@@ -1,4 +1,4 @@
-console.log('YT.js >> V2.02.05');
+console.log('YT.js >> V2.02.07');
 
 function sendToServer(playlist_txt, listID, nb) {
 
@@ -28,11 +28,20 @@ function sendToServer(playlist_txt, listID, nb) {
     champ3.value = listID;
     form.appendChild(champ3);
 
-    var champ4 = document.createElement('input');
-    champ4.type = 'hidden';
-    champ4.name = 'name';
-    champ4.value = document.querySelector("title").innerHTML;
-    form.appendChild(champ4);
+    try {
+        pl_name = document.getElementById("pl_name").innerText
+        if (pl_name != "") {
+
+            var champ4 = document.createElement('input');
+            champ4.type = 'hidden';
+            champ4.name = 'name';
+            champ4.value = pl_name;
+            form.appendChild(champ4);
+        }
+
+    } catch (error) {
+
+    }
 
     // Soumettez le formulaire dans le popup
     var popup = window.open('', 'Lecteur MiYT | Connexion au serveur...', 'width=500,height=400');

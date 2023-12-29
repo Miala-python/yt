@@ -1,4 +1,4 @@
-console.log('YT.js >> V2.02.08');
+console.log('YT.js >> V2.02.09');
 
 function sendToServer(playlist_txt, listID, nb) {
 
@@ -84,7 +84,7 @@ var url = new URL(currentUrl);
 var params = new URLSearchParams(url.search);
 var listValue = params.get("list");
 
-var my_playlist_txt = document.getElementById('my_playlist').innerHTML;
+var my_playlist_txt = document.getElementById('my_playlist').innerHTML.trim();
 var my_playlist = my_playlist_txt.split(';');
 
 var list_length = my_playlist.length;

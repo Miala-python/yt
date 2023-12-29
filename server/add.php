@@ -39,9 +39,9 @@ try {
         exit;
     }
 
-    $playlist = $_POST['playlist'];
+    $playlist = trim($_POST['playlist']);
     $pllist_length = $_POST['nb'];
-    $listID = $_POST['listID'];
+    $listID = trim($_POST['listID']);
 
     if (empty($_POST['name'])){
         $name = "Liste de lecture de longueur:";

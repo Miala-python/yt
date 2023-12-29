@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 
 // Activer l'affichage des erreurs
 ini_set('display_errors', 1);
@@ -41,7 +40,7 @@ try {
     $listID = $_POST['listID'];
     $name = $_POST['name'].trim(' - YouTube');
 
-    $name .= ' [' . pllist_length . ']';
+    $name .= ' [' . $pllist_length . ']';
 
     $dir = './db/';
     $path = $dir . 'index.list';
@@ -61,7 +60,7 @@ try {
     }
 
     if ($id_idx === false) {
-        $path_myfile = $dir . $name . '.Mpl';
+        $path_myfile = $dir . $listID . '.Mpl';
 
         $handle = fopen($path_myfile, "w");
         fwrite($handle, $playlist);
@@ -69,7 +68,7 @@ try {
 
         $list[] = $name;
         $list[] = $listID;
-        $del_path = $dir . trim($list[0]) . '.Mpl';
+        $del_path = $dir . trim($list[1]) . '.Mpl';
         if (file_exists($del_path)) {
             unlink($del_path);
         }
@@ -85,7 +84,7 @@ try {
         $name_idx = $id_idx - 1;
         $list[] = $name;
         $list[] = $listID;
-        $del_path = $dir . trim($list[$name_idx]) . '.Mpl';
+        $del_path = $dir . trim($list[$id_idx]) . '.Mpl';
         if (file_exists($del_path)) {
             unlink($del_path);
         }
@@ -98,7 +97,7 @@ try {
         fwrite($handle, $content);
         fclose($handle);
 
-        $path_myfile = $dir . $name . '.Mpl';
+        $path_myfile = $dir . $listID . '.Mpl';
 
         $handle = fopen($path_myfile, "w");
         fwrite($handle, $playlist);

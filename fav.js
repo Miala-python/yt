@@ -35,7 +35,7 @@ function run() {
         var mpl = document.createElement("p");
         mpl.setAttribute("class", "is-hidden");
         mpl.setAttribute("id", "my_playlist");
-        mpl.innerText = videos.join(";").replace(/&list/gi, "");
+        mpl.innerHTML = videos.join(";").replace(/&list/gi, "");
         document.querySelector('html').appendChild(mpl);
 
         var WatcherMi = document.createElement("script");

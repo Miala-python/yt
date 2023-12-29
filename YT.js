@@ -29,7 +29,7 @@ var url = new URL(currentUrl);
 var params = new URLSearchParams(url.search);
 var listValue = params.get("list");
 
-var my_playlist_txt = document.getElementById('my_playlist').innerText;
+var my_playlist_txt = document.getElementById('my_playlist').innerHTML;
 var my_playlist = my_playlist_txt.split(';');
 
 list_length = my_playlist.length;

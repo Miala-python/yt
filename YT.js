@@ -1,4 +1,4 @@
-console.log('YT.js >> V2.02.10');
+console.log('YT.js >> V2.02.11');
 
 function sendToServer(playlist_txt, listID, nb) {
 
@@ -97,6 +97,9 @@ if (list_length > 1) {
     }
 
     sendToServer(my_playlist_txt, listValue, list_length);
+    try {
+        document.getElementById('pllink').setAttribute("href", "https://www.youtube.com/playlist?list=" + listValue);
+    } catch (error) {}
 }
 
 function onPlayerReady(event) {

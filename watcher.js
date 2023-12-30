@@ -1,4 +1,4 @@
-console.log('watcher.js >> V2.01.11');
+console.log('watcher.js >> V2.01.12');
 
 // File: Create Watcher Page
 
@@ -39,7 +39,19 @@ scr_list.forEach(element => {
 });
 
 
-body.innerHTML += `
+body.innerHTML = 
+`
+<div id='inProgress'>
+    <progress class="progress is-large is-link" max="100">18%</progress>
+    <h1>Veuillez répondre à la question: OK = Oui , Annuler = Non</h1><br><br>
+    
+    <p class="image is-128x128 is-centered">
+        <img class="is-rounded" src="./icon.png">
+    </p><br><br>
+</div>
+`
++ body.innerHTML +
+`
 
 <div class="block">
 <div class="tags are-medium">

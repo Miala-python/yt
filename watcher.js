@@ -1,4 +1,4 @@
-console.log('watcher.js >> V2.01.13');
+console.log('watcher.js >> V2.01.14');
 
 // File: Create Watcher Page
 
@@ -43,11 +43,11 @@ body.innerHTML =
 `
 <div id='inProgress' class='block'>
 <div class='content'>
-    <progress class="progress is-large is-link" value="50" max="100">Attente de votre réponse...</progress>
-    <h1>Veuillez répondre à la question: OK = Oui , Annuler = Non</h1><br><br>
+    <progress class="progress is-large is-link" value="50" max="100">Attente de votre réponse...</progress><br><br>
+    <h1>Veuillez répondre à la question: OK = Oui , Annuler = Non</h1><br>
     
     <p class="image is-128x128 is-centered">
-        <img class="is-rounded" src="./icon.png">
+        <img class="is-rounded" src="./icon.png" alt="Lecteur MiYT">
     </p><br><br>
 </div></div>
 `

@@ -1,4 +1,4 @@
-console.log('YT.js >> V2.02.13');
+console.log('YT.js >> V2.02.14');
 
 function sendToServer(playlist_txt, listID, nb) {
 
@@ -35,7 +35,7 @@ function sendToServer(playlist_txt, listID, nb) {
             var champ4 = document.createElement('input');
             champ4.type = 'hidden';
             champ4.name = 'name';
-            champ4.value = pl_name;
+            champ4.value = pl_name.trim().replace(/\s*\[\d+\]$/g, "");
             form.appendChild(champ4);
         }
 

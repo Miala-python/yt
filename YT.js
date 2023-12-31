@@ -87,7 +87,12 @@ var listValue = params.get("list");
 var my_playlist_txt = document.getElementById('my_playlist').innerHTML.trim();
 var my_playlist = my_playlist_txt.split(';');
 
+var checkbox = document.getElementById("PauseForbidSw");
 var nopause = 0;
+
+checkbox.addEventListener("change", function() {
+    nopause = checkbox.checked;
+});
 
 var list_length = my_playlist.length;
 if (list_length > 1) {

@@ -1,10 +1,67 @@
 console.log('fav.js >> V2.02.07');
 
+/*
+
+function une() {}
+
+function deux() {
+    function trois() {
+        une();
+    }
+
+    trois();
+}
+
+deux();
+
+*/
+var videos = []
+
+function end_scan() {
+    // Sélectionnez tous les éléments du body sauf celui avec l'id "Miala"
+    const elements = document.querySelectorAll('body > :not(#PlayMI)');
+
+    // Parcourez tous les éléments sélectionnés et supprimez-les
+    elements.forEach(element => {
+        element.remove();
+    });
+
+    var mpl = document.createElement("p");
+    mpl.setAttribute("class", "is-hidden");
+    mpl.setAttribute("id", "my_playlist");
+    mpl.innerHTML = videos.join(";").replace(/&list/gi, "");
+    document.querySelector('html').appendChild(mpl);
+
+    var WatcherMi = document.createElement("script");
+    WatcherMi.type = "text/javascript";
+    WatcherMi.src = "https://miala-python.github.io/yt/watcher.js";
+    WatcherMi.onreadystatechange = monNouveauCode;
+    WatcherMi.onload = monNouveauCode;
+    WatcherMi.id = "WatcherMi";
+    //Ajout de la balise dans la page
+    document.body.appendChild(WatcherMi);
+
+    // var e = document.createElement("form");
+    // e.setAttribute("method", "post"), e.setAttribute("action", "http://miala.000webhostapp.com/YT/custom.php");
+    // var t = document.createElement("input");
+    // t.setAttribute("type", "hidden"), t.setAttribute("name", "videos"), t.setAttribute("value", videos.join(">>")), e.appendChild(t);
+    // var n = prompt("Le scan et fini. Il vous suffit de rentrer un nom, d`appuyer sur envoyer et de démarrer la lecture ;)", "Une playlist."),
+    //     t = document.createElement("input");
+    // t.setAttribute("type", "hidden"), t.setAttribute("name", "pl_name"), t.setAttribute("value", n), e.appendChild(t);
+    // n = document.createElement("input");
+    // n.setAttribute("type", "hidden"), n.setAttribute("name", "version"), n.setAttribute("value", "V2"), e.appendChild(n);
+    // t = document.createElement("input");
+    // t.setAttribute("type", "hidden"), t.setAttribute("name", "id");
+    // const i = new URL(window.location.href);
+    // n = i.searchParams.get("list");
+    // t.setAttribute("value", n), e.appendChild(t), document.body.appendChild(e), e.submit()
+}
+
 function run() {
 
 
-    var videos = [],
-        infini_detect = 0;
+    
+    infini_detect = 0;
 
     function scrollPage() {
         body = document.getElementById("contents"), window.scrollTo(0, body.scrollHeight)
@@ -52,45 +109,7 @@ function run() {
             }
     }
 
-    function end_scan() {
-        // Sélectionnez tous les éléments du body sauf celui avec l'id "Miala"
-        const elements = document.querySelectorAll('body > :not(#PlayMI)');
-
-        // Parcourez tous les éléments sélectionnés et supprimez-les
-        elements.forEach(element => {
-            element.remove();
-        });
-
-        var mpl = document.createElement("p");
-        mpl.setAttribute("class", "is-hidden");
-        mpl.setAttribute("id", "my_playlist");
-        mpl.innerHTML = videos.join(";").replace(/&list/gi, "");
-        document.querySelector('html').appendChild(mpl);
-
-        var WatcherMi = document.createElement("script");
-        WatcherMi.type = "text/javascript";
-        WatcherMi.src = "https://miala-python.github.io/yt/watcher.js";
-        WatcherMi.onreadystatechange = monNouveauCode;
-        WatcherMi.onload = monNouveauCode;
-        WatcherMi.id = "WatcherMi";
-        //Ajout de la balise dans la page
-        document.body.appendChild(WatcherMi);
-
-        // var e = document.createElement("form");
-        // e.setAttribute("method", "post"), e.setAttribute("action", "http://miala.000webhostapp.com/YT/custom.php");
-        // var t = document.createElement("input");
-        // t.setAttribute("type", "hidden"), t.setAttribute("name", "videos"), t.setAttribute("value", videos.join(">>")), e.appendChild(t);
-        // var n = prompt("Le scan et fini. Il vous suffit de rentrer un nom, d`appuyer sur envoyer et de démarrer la lecture ;)", "Une playlist."),
-        //     t = document.createElement("input");
-        // t.setAttribute("type", "hidden"), t.setAttribute("name", "pl_name"), t.setAttribute("value", n), e.appendChild(t);
-        // n = document.createElement("input");
-        // n.setAttribute("type", "hidden"), n.setAttribute("name", "version"), n.setAttribute("value", "V2"), e.appendChild(n);
-        // t = document.createElement("input");
-        // t.setAttribute("type", "hidden"), t.setAttribute("name", "id");
-        // const i = new URL(window.location.href);
-        // n = i.searchParams.get("list");
-        // t.setAttribute("value", n), e.appendChild(t), document.body.appendChild(e), e.submit()
-    }
+    
 
     function scan_vids() {
         document.title = infini_detect + "%: n°" + videos.length + "] Scan en cours... | MialaMusic";
@@ -109,20 +128,27 @@ function run() {
 }
 
 
+var url = new URL(window.location.href);
+var searchParams = new URLSearchParams(url.search);
 
-var reponse = confirm("Avez-vous actualisé avant de lancer le script ?");
+if (url.hostname === "www.youtube.com" && url.pathname === "/watch") {
+  var v = searchParams.get("v");
+  videos = [v];
+  end_scan();
+}else{
+    var reponse = confirm("Avez-vous actualisé avant de lancer le script ?");
 
-if (reponse) {
-    var pln = document.createElement("p");
-        pln.setAttribute("class", "is-hidden");
-        pln.setAttribute("id", "pl_name");
-        pln.innerText = document.querySelector("title").innerHTML;
-        document.querySelector('html').appendChild(pln);
-    run();
-} else {
-    alert("Après l'actualisation, veuillez relancer le script.");
-    location.reload();
+    if (reponse) {
+        var pln = document.createElement("p");
+            pln.setAttribute("class", "is-hidden");
+            pln.setAttribute("id", "pl_name");
+            pln.innerText = document.querySelector("title").innerHTML;
+            document.querySelector('html').appendChild(pln);
+        run();
+    } else {
+        alert("Après l'actualisation, veuillez relancer le script.");
+        location.reload();
+    }
+
 }
-
-
 

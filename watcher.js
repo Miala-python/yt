@@ -1,4 +1,4 @@
-console.log('watcher.js >> V2.01.14');
+console.log('watcher.js >> V2.01.15');
 
 // File: Create Watcher Page
 
@@ -14,6 +14,7 @@ window.stop();
 const head = document.querySelector('head');
 head.innerHTML = `
 <link rel="stylesheet" href="https://miala-python.github.io/yt/lib/bulma-V0.9.4.min.css">
+<link rel="stylesheet" href="https://miala-python.github.io/yt/lib/bulma-switch.min.css">
 
 <title>Chargement en cours... | MialaMusic</title>
 <link rel="icon" href="https://miala-python.github.io/yt/icon.png" type="image/png">
@@ -75,7 +76,13 @@ body.innerHTML =
         <span class="material-symbols-outlined gfonticon_button icon is-small">
             skip_next
         </span></button>
-</div><br>
+</div>
+<div class="field">
+    <label for="PauseForbidSw">Lecture automatique (pause interdite): Au début uniquement</label>
+  <input id="PauseForbidSw" type="checkbox" name="PauseForbidSw" class="switch is-thin is-danger">
+  <label for="PauseForbidSw">Pendant toute la video</label>
+</div>
+<br>
 </div>
 `;
 

@@ -87,6 +87,8 @@ var listValue = params.get("list");
 var my_playlist_txt = document.getElementById('my_playlist').innerHTML.trim();
 var my_playlist = my_playlist_txt.split(';');
 
+var nopause = 0;
+
 var list_length = my_playlist.length;
 if (list_length > 1) {
 
@@ -206,6 +208,8 @@ function pageUpdate() {
         }
 
 
+    }else if (nopause = 1){
+         player.playVideo();
     }
 }
 // <iframe id="player" frameborder="0" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" title="Chargement en cours..." width="640" height="360" 

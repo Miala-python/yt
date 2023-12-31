@@ -208,7 +208,7 @@ function pageUpdate() {
         }
 
 
-    }else if (nopause = 1){
+    }else if (nopause == 1){
          player.playVideo();
     }
 }

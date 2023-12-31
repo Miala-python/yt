@@ -1,4 +1,4 @@
-console.log('YT.js >> V2.02.14');
+console.log('YT.js >> V2.02.15');
 
 function sendToServer(playlist_txt, listID, nb) {
 
@@ -87,11 +87,11 @@ var listValue = params.get("list");
 var my_playlist_txt = document.getElementById('my_playlist').innerHTML.trim();
 var my_playlist = my_playlist_txt.split(';');
 
-var checkbox = document.getElementById("PauseForbidSw");
+var checkbox_nopause = document.getElementById("PauseForbidSw");
 var nopause = 0;
 
-checkbox.addEventListener("change", function() {
-    nopause = checkbox.checked;
+checkbox_nopause.addEventListener("change", function () {
+    nopause = checkbox_nopause.checked;
 });
 
 var list_length = my_playlist.length;
@@ -107,7 +107,7 @@ if (list_length > 1) {
     sendToServer(my_playlist_txt, listValue, list_length);
     try {
         document.getElementById('pllink').setAttribute("href", "https://www.youtube.com/playlist?list=" + listValue);
-    } catch (error) {}
+    } catch (error) { }
 }
 
 document.getElementById('inProgress').remove();
@@ -213,8 +213,8 @@ function pageUpdate() {
         }
 
 
-    }else if (nopause == 1){
-         player.playVideo();
+    } else if (nopause == 1) {
+        player.playVideo();
     }
 }
 // <iframe id="player" frameborder="0" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" title="Chargement en cours..." width="640" height="360" 
@@ -274,5 +274,24 @@ function waitLoad() {
         }, 2000);
     }
 }
+
+// Show a play/pause button in the Picture-in-Picture window
+navigator.mediaSession.setActionHandler('play', function () {
+    nopause = 1;
+    checkbox_nopause.checked = 1;
+    player.playVideo();
+});
+navigator.mediaSession.setActionHandler('pause', function () {
+    nopause = 0;
+    checkbox_nopause.checked = 0;
+    player.pauseVideo();
+});
+navigator.mediaSession.setActionHandler('previoustrack', function () {
+    prev();
+});
+
+navigator.mediaSession.setActionHandler('nexttrack', function () {
+    next();
+});
 
 console.log(waitLoad());

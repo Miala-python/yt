@@ -76,12 +76,13 @@ body.innerHTML =
         <span class="material-symbols-outlined gfonticon_button icon is-small">
             skip_next
         </span></button>
+    <!--
     <button id="PiP_btn" class="button is-info is-light" onclick="if (document.pictureInPictureElement) {
         document.exitPictureInPicture();
       } else if (document.pictureInPictureEnabled) {
         video.requestPictureInPicture();
       }">
-        PiP</button>
+        PiP</button> -->
 </div>
 <div class="field">
     <label for="PauseForbidSw">Lecture automatique (pause interdite): Au début uniquement</label>

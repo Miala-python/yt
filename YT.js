@@ -1,4 +1,4 @@
-console.log('YT.js >> V2.02.15');
+console.log('YT.js >> V2.02.16');
 
 function sendToServer(playlist_txt, listID, nb) {
 
@@ -235,6 +235,21 @@ function onYouTubeIframeAPIReady() {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange,
             'onError': onERR
+        },
+        controlslist: ["previous", "playpause", "next", "mute", "volume", "fullscreen", "pip"],
+    });
+
+
+
+    player.addEventListener("controls", () => {
+        if (player.controls.playButton.classList.contains("active")) {
+            nopause = 0;
+            checkbox_nopause.checked = 0;
+        } else if (player.controls.nextButton.classList.contains("active")) {
+            // L'utilisateur a cliqué sur le bouton suivant.
+            next();
+        } else if (player.controls.previousButton.classList.contains("active")) {
+            prev()
         }
     });
 

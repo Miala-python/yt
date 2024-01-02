@@ -71,7 +71,27 @@ function sendToServer(playlist_txt, listID, nb) {
 }
 
 function shuffleArray(arr) {
-    arr.sort(() => Math.random() - 0.5);
+    // arr.sort(() => Math.random() - 0.5);
+
+  // Créer un tableau vide pour contenir les éléments mélangés
+  const arr2 = [];
+
+  // Pour chaque élément du tableau d'origine
+  for (let i = 0; i < arr.length; i++) {
+    // Générer un nombre aléatoire entre 0 et la longueur du tableau moins i
+    const y = Math.floor(Math.random() * (arr.length - i));
+
+    // Ajouter l'élément i du tableau d'origine au tableau mélangé
+    arr2.push(arr[y]);
+
+    // Supprimer l'élément i du tableau d'origine
+    arr.splice(y, 1);
+  }
+
+  // Retourner le tableau mélangé
+  return arr2;
+
+
 }
 
 // 1. Créez un objet de lecteur IFrame

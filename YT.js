@@ -1,4 +1,4 @@
-console.log('YT.js >> V2.02.16');
+console.log('YT.js >> V2.02.17');
 
 function sendToServer(playlist_txt, listID, nb) {
 
@@ -73,25 +73,32 @@ function sendToServer(playlist_txt, listID, nb) {
 function shuffleArray(arr) {
     // arr.sort(() => Math.random() - 0.5);
 
-  // Créer un tableau vide pour contenir les éléments mélangés
-  const arr2 = [];
+    // Créer un tableau vide pour contenir les éléments mélangés
+    const arr2 = [];
 
-  // Pour chaque élément du tableau d'origine
-  for (let i = 0; i < arr.length; i++) {
-    // Générer un nombre aléatoire entre 0 et la longueur du tableau moins i
-    const y = Math.floor(Math.random() * (arr.length - i));
+    // Pour chaque élément du tableau d'origine
+    for (let i = 0; i < arr.length; i++) {
+        // Générer un nombre aléatoire entre 0 et la longueur du tableau moins i
+        const y = Math.floor(Math.random() * (arr.length - i));
 
-    // Ajouter l'élément i du tableau d'origine au tableau mélangé
-    arr2.push(arr[y]);
+        // Ajouter l'élément i du tableau d'origine au tableau mélangé
+        arr2.push(arr[y]);
 
-    // Supprimer l'élément i du tableau d'origine
-    arr.splice(y, 1);
-  }
+        // Supprimer l'élément i du tableau d'origine
+        arr.splice(y, 1);
+    }
 
-  // Retourner le tableau mélangé
-  return arr2;
+    // Retourner le tableau mélangé
+    return arr2;
+}
 
+function shuffleAsk() {
+    // #ranQ?
+    var reponse = confirm("Lecture de la playlist en mode aléatoire ?");
 
+    if (reponse) {
+        shuffleArray(my_playlist);
+    }
 }
 
 // 1. Créez un objet de lecteur IFrame
@@ -114,23 +121,51 @@ checkbox_nopause.addEventListener("change", function () {
     nopause = checkbox_nopause.checked;
 });
 
-var list_length = my_playlist.length;
-if (list_length > 1) {
+var waitLibI = 0; //end if too much
 
-    // #ranQ?
-    var reponse = confirm("Lecture de la playlist en mode aléatoire ?");
+function waitLib() {
 
-    if (reponse) {
-        shuffleArray(my_playlist);
+    waitLibI += 1;
+
+    let end = (waitLibI == 9);
+
+    if (lcl_LOADED || end) {
+
+        if (lcl_LOADED) {
+            if (lcl_load('plid') == listValue) {
+                let watch_id = lcl_load('watch_id');
+                id = watch_id ? watch_id : 0;
+                let pl_ctn = lcl_load_list('pl_ctn');
+                my_playlist = pl_ctn ? pl_ctn : my_playlist;
+            } else {
+                lcl_rmv_all();
+                lcl_save('plid', listValue);
+                shuffleAsk();
+                lcl_save_list('pl_ctn', my_playlist);
+            }
+
+        }
+
+        var list_length = my_playlist.length;
+        if (list_length > 1) {
+            if (!lcl_LOADED){ shuffleAsk(); }
+
+            sendToServer(my_playlist_txt, listValue, list_length);
+            try {
+                document.getElementById('pllink').setAttribute("href", "https://www.youtube.com/playlist?list=" + listValue);
+            } catch (error) { }
+        }
+
+
+
+        document.getElementById('inProgress').remove();
+    } else {
+        setTimeout(waitLib, waitLibI * 100);
     }
 
-    sendToServer(my_playlist_txt, listValue, list_length);
-    try {
-        document.getElementById('pllink').setAttribute("href", "https://www.youtube.com/playlist?list=" + listValue);
-    } catch (error) { }
 }
 
-document.getElementById('inProgress').remove();
+waitLib();
 
 function onPlayerReady(event) {
     console.log(event, ': Player Ready => ', player);
@@ -145,6 +180,10 @@ function changeVideo(vid_id) {
     document.title = 'MialaMusic Playlist Randomer';
     document.getElementById('infos_vid').innerText = 'Chargement... (ID: ' + vid_id + ' #' + id + ') - MialaMusic Playlist Randomer';
     // window.history.pushState(null, '', '/YT/watch.php?idx=' + id);
+
+    if (lcl_LOADED) {
+        lcl_save('watch_id', id);
+    }
 }
 
 function prev() {
@@ -330,3 +369,14 @@ navigator.mediaSession.setActionHandler('nexttrack', function () {
 });
 
 console.log(waitLoad());
+
+
+document.getElementById('reset_btn').onclick = function () {
+    var reponse = confirm("Souhaitez-vous réinitialiser la progression actuelle (numéro de la vidéo et ordre) ?\nPS: Autorisez les popups.");
+
+    if (reponse) {
+        lcl_rmv_all();
+        sendToServer(my_playlist_txt, listValue, list_length);
+        window.location.href = "https://miala.000webhostapp.com/YT/load.php?list=" + listValue;
+    }
+};

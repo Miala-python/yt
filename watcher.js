@@ -27,6 +27,7 @@ var scr_list = [
     // "https://www.youtube.com/s/player/d23221b6/www-widgetapi.vflset/www-widgetapi.js",
     "https://www.youtube.com/iframe_api",
     // "https://miala-python.github.io/yt/iframe_api.js",
+    "https://miala-python.github.io/yt/lib/saver.js",
     "https://miala-python.github.io/yt/lib/jquery.js",
     "https://miala-python.github.io/yt/lib/pubblock.js",
     "https://cdnjs.cloudflare.com/ajax/libs/fetch/2.6.0/fetch.min.js"
@@ -88,6 +89,15 @@ body.innerHTML =
     <label for="PauseForbidSw">Lecture automatique (pause interdite): Au début uniquement</label>
     <input id="PauseForbidSw" type="checkbox" name="PauseForbidSw" class="switch is-danger">
     <label for="PauseForbidSw"Pendant toute la video</label>
+</div>
+<br>
+
+<div class="buttons">
+    <button id="reset_btn" class="button is-warning is-light">
+        <span class="material-symbols-outlined gfonticon_button icon is-small">
+            reset_wrench
+        </span>
+    </button>
 </div>
 <br>
 </div>

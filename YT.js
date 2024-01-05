@@ -1,4 +1,4 @@
-console.log('YT.js >> V2.02.17');
+console.log('YT.js >> V2.02.18');
 
 function sendToServer(playlist_txt, listID, nb) {
 
@@ -280,6 +280,8 @@ function pageUpdate() {
 // src=https://www.youtube.com/embed/IkMx-PY6XZY?enablejsapi=1&amp;origin=https%3A%2F%2Fmiala.000webhostapp.com&amp;widgetid=1"></iframe>
 
 function onERR() {
+    let currentState = player.getPlayerState();
+    let video_title = player.getVideoData().title;
     if (currentState === -1 && video_title != '') {
         console.log('Video ERR, next');
         next();

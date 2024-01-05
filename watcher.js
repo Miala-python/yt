@@ -1,4 +1,4 @@
-console.log('watcher.js >> V2.01.15');
+console.log('watcher.js >> V2.02.17');
 
 // File: Create Watcher Page
 
@@ -95,7 +95,7 @@ body.innerHTML =
 <div class="buttons">
     <button id="reset_btn" class="button is-warning is-light">
         <span class="material-symbols-outlined gfonticon_button icon is-small">
-            reset_wrench
+            restart_alt
         </span>
     </button>
 </div>

@@ -1,4 +1,4 @@
-console.log('YT.js >> V2.02.23');
+console.log('YT.js >> V2.02.24');
 
 function sendToServer(playlist_txt, listID, nb) {
 
@@ -103,7 +103,9 @@ function shuffleAsk() {
 
 // 1. Créez un objet de lecteur IFrame
 var player = false;
-var lcl_LOADED = false;
+if (typeof lcl_LOADED === 'undefined') {
+    var lcl_LOADED = false;
+}
 
 var id = 0;
 
@@ -358,10 +360,10 @@ function waitLib() {
 
     waitLibI += 1;
 
-    console.log("WaitLib... 9/" + waitLibI)
+    console.log("WaitLib... 11/" + waitLibI)
 
 
-    if (lcl_LOADED || waitLibI == 9) {
+    if (lcl_LOADED || waitLibI == 11) {
 
         if (lcl_LOADED) {
             if (lcl_load('plid') == listValue) {
@@ -398,7 +400,7 @@ function waitLib() {
         document.getElementById('inProgress').remove();
     } else {
 
-        document.getElementById('loading_progress').setAttribute("value", waitLibI * 100 + 10);
+        document.getElementById('loading_progress').setAttribute("value", waitLibI * 100);
         setTimeout(waitLib, waitLibI * 100);
     }
 

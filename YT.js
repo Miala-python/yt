@@ -1,4 +1,4 @@
-console.log('YT.js >> V2.02.19');
+console.log('YT.js >> V2.02.20');
 
 function sendToServer(playlist_txt, listID, nb) {
 
@@ -121,57 +121,6 @@ checkbox_nopause.addEventListener("change", function () {
     nopause = checkbox_nopause.checked;
 });
 
-var waitLibI = 0; //end if too much
-
-function waitLib() {
-
-    waitLibI += 1;
-
-    console.log("WaitLib... 9/" + waitLibI)
-
-
-    let end = (waitLibI == 9);
-
-    if (lcl_LOADED || end) {
-
-        if (lcl_LOADED) {
-            if (lcl_load('plid') == listValue) {
-                let watch_id = lcl_load('watch_id');
-                id = watch_id ? watch_id : 0;
-                let pl_ctn = lcl_load_list('pl_ctn');
-                my_playlist = pl_ctn ? pl_ctn : my_playlist;
-            } else {
-                lcl_rmv_all();
-                lcl_save('plid', listValue);
-                shuffleAsk();
-                lcl_save_list('pl_ctn', my_playlist);
-            }
-
-        }
-
-        var list_length = my_playlist.length;
-        if (list_length > 1) {
-            if (!lcl_LOADED) { shuffleAsk(); }
-
-            sendToServer(my_playlist_txt, listValue, list_length);
-            try {
-                document.getElementById('pllink').setAttribute("href", "https://www.youtube.com/playlist?list=" + listValue);
-            } catch (error) { }
-        }
-
-
-
-        document.getElementById('inProgress').remove();
-    } else {
-
-        document.getElementById('loading_progress').setAttribute("value", waitLibI * 100 + 10);
-        setTimeout(waitLib, waitLibI * 100);
-    }
-
-}
-
-waitLib();
-
 function onPlayerReady(event) {
     console.log(event, ': Player Ready => ', player);
     event.target.playVideo();
@@ -225,7 +174,10 @@ function onPlayerStateChange(event) {
     }
 }
 
+var pageUpdate_i = 0;
+
 function pageUpdate() {
+    //currentState : 
     //-1: Non initialisé
     // 0: Terminé
     // 1: En lecture
@@ -233,52 +185,61 @@ function pageUpdate() {
     // 3: En file d’attente
     // 5: Vidéo en file d’attente interrompue
 
-    var duration = player.getDuration();
-    var currentTime = player.getCurrentTime();
-    var currentState = player.getPlayerState();
+    let currentTime = player.getCurrentTime();
+    let currentState = player.getPlayerState();
 
-    console.log('Page update: ' + currentTime + '/' + duration + ' => ' + currentState);
+    // En lecture, toutes les 5s. Sinon: ttes les secondes
+    if (pageUpdate_i == 4 || currentState != 1 || currentTime < 5) {
+        pageUpdate_i = 0;
 
-    var video_title = player.getVideoData().title;
+        var duration = player.getDuration();
 
-    if (currentTime < 10) {
-        if (video_title != '') {
-            document.title = video_title + ' | MialaMusic';
-            document.getElementById('infos_vid').innerText = video_title + ' (ID: ' + player.getVideoData().video_id + ' #' + id + ') - MialaMusic';
+        console.log('Page update: ' + currentTime + '/' + duration + ' => ' + currentState);
+
+        var video_title = player.getVideoData().title;
+
+        if (currentTime < 10) {
+            if (video_title != '') {
+                document.title = video_title + ' | MialaMusic';
+                document.getElementById('infos_vid').innerText = video_title + ' (ID: ' + player.getVideoData().video_id + ' #' + id + ') - MialaMusic';
+            }
         }
-    }
 
-    if (currentState === 0) {
-        next();
-    } else if (currentState === 1 && duration > 30) {
-        if (currentTime > (duration - 2)) {
+        if (currentState === 0) {
             next();
-        }
-    } else if (currentTime < 2) {
-
-        console.log('Try play');
-        player.playVideo();
-
-
-        currentState = player.getPlayerState();
-
-        if (currentState !== 1) {
-            console.log('Clicked');
-
-            // console.log(currentState === -1 && video_title == '');
-            if (currentState === -1 && video_title == '') {
-                console.log('Video Indispo, next');
+        } else if (currentState === 1 && duration > 30) {
+            if (currentTime > (duration - 2)) {
                 next();
             }
+        } else if (currentTime < 2) {
 
-            // console.log(document.getElementsByClassName('ytp-button')[0]);
-            document.getElementsByClassName('ytp-button')[0].click();
-            // document.getElementsByClassName('ytp-play-button')[0].click();
+            console.log('Try play');
+            player.playVideo();
+
+
+            currentState = player.getPlayerState();
+
+            if (currentState !== 1) {
+                console.log('Clicked');
+
+                // console.log(currentState === -1 && video_title == '');
+                if (currentState === -1 && video_title == '') {
+                    console.log('Video Indispo, next');
+                    next();
+                }
+
+                // console.log(document.getElementsByClassName('ytp-button')[0]);
+                document.getElementsByClassName('ytp-button')[0].click();
+                // document.getElementsByClassName('ytp-play-button')[0].click();
+            }
+
+
+        } else if (currentState === 2 && nopause == 1) {
+            player.playVideo();
         }
 
-
-    } else if (currentState === 2 && nopause == 1) {
-        player.playVideo();
+    } else {
+        pageUpdate_i += 1;
     }
 }
 // <iframe id="player" frameborder="0" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" title="Chargement en cours..." width="640" height="360" 
@@ -295,7 +256,7 @@ function onERR() {
 
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
-        videoId: my_playlist[0],
+        videoId: my_playlist[id],
         playerVars: { 'autoplay': 1, 'picture-in-picture': 1 },
         events: {
             'onReady': onPlayerReady,
@@ -321,7 +282,7 @@ function onYouTubeIframeAPIReady() {
 
     console.log(player);
 
-    setInterval(pageUpdate, 5000);
+    setInterval(pageUpdate, 1000);
 
 }
 
@@ -387,3 +348,59 @@ document.getElementById('reset_btn').onclick = function () {
         window.location.href = "https://miala.000webhostapp.com/YT/load.php?list=" + listValue;
     }
 };
+
+
+
+var waitLibI = 0; //end if too much
+
+function waitLib() {
+
+    waitLibI += 1;
+
+    console.log("WaitLib... 9/" + waitLibI)
+
+
+    let end = (waitLibI == 9);
+
+    if (lcl_LOADED || end) {
+
+        if (lcl_LOADED) {
+            if (lcl_load('plid') == listValue) {
+                let watch_id = lcl_load('watch_id');
+                id = watch_id ? watch_id : 0;
+                let pl_ctn = lcl_load_list('pl_ctn');
+                my_playlist = pl_ctn ? pl_ctn : my_playlist;
+
+                //Charge la vidéo avec l'ID sauvegardé.
+                changeVideo(my_playlist[id]);
+            } else {
+                lcl_rmv_all();
+                lcl_save('plid', listValue);
+                shuffleAsk();
+                lcl_save_list('pl_ctn', my_playlist);
+            }
+
+        }
+
+        var list_length = my_playlist.length;
+        if (list_length > 1) {
+            if (!lcl_LOADED) { shuffleAsk(); }
+
+            sendToServer(my_playlist_txt, listValue, list_length);
+            try {
+                document.getElementById('pllink').setAttribute("href", "https://www.youtube.com/playlist?list=" + listValue);
+            } catch (error) { }
+        }
+
+
+
+        document.getElementById('inProgress').remove();
+    } else {
+
+        document.getElementById('loading_progress').setAttribute("value", waitLibI * 100 + 10);
+        setTimeout(waitLib, waitLibI * 100);
+    }
+
+}
+
+waitLib();

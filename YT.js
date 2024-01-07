@@ -1,4 +1,4 @@
-console.log('YT.js >> V2.02.25');
+console.log('YT.js >> V2.02.26');
 
 function sendToServer(playlist_txt, listID, nb) {
 
@@ -350,6 +350,7 @@ console.log(waitLoad());
 
 document.getElementById('reset_btn').onclick = function () {
     var reponse = confirm("Souhaitez-vous réinitialiser la progression actuelle (numéro de la vidéo et ordre) ?\nPS: Autorisez les popups.");
+    let list_length = my_playlist.length;
 
     if (reponse) {
         lcl_rmv_all();
@@ -387,7 +388,7 @@ function waitLib() {
 
         }
 
-        var list_length = my_playlist.length;
+        let list_length = my_playlist.length;
         if (list_length > 1) {
             if (!lcl_LOADED) { shuffleAsk(); }
 

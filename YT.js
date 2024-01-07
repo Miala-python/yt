@@ -1,4 +1,4 @@
-console.log('YT.js >> V2.02.18');
+console.log('YT.js >> V2.02.19');
 
 function sendToServer(playlist_txt, listID, nb) {
 
@@ -127,6 +127,9 @@ function waitLib() {
 
     waitLibI += 1;
 
+    console.log("WaitLib... 9/" + waitLibI)
+
+
     let end = (waitLibI == 9);
 
     if (lcl_LOADED || end) {
@@ -148,7 +151,7 @@ function waitLib() {
 
         var list_length = my_playlist.length;
         if (list_length > 1) {
-            if (!lcl_LOADED){ shuffleAsk(); }
+            if (!lcl_LOADED) { shuffleAsk(); }
 
             sendToServer(my_playlist_txt, listValue, list_length);
             try {
@@ -160,6 +163,8 @@ function waitLib() {
 
         document.getElementById('inProgress').remove();
     } else {
+
+        document.getElementById('loading_progress').setAttribute("value", waitLibI * 100 + 10);
         setTimeout(waitLib, waitLibI * 100);
     }
 

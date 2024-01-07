@@ -1,4 +1,4 @@
-console.log('YT.js >> V2.02.24');
+console.log('YT.js >> V2.02.25');
 
 function sendToServer(playlist_txt, listID, nb) {
 
@@ -108,6 +108,7 @@ if (typeof lcl_LOADED === 'undefined') {
 }
 
 var id = 0;
+var id_played = 0;
 
 var currentUrl = window.location.href;
 var url = new URL(currentUrl);
@@ -132,6 +133,7 @@ function onPlayerReady(event) {
 
 function changeVideo(vid_id) {
     player.pauseVideo();
+    id_played = id;
     player.loadVideoById(vid_id);
     player.playVideo();
     document.title = 'MialaMusic Playlist Randomer';
@@ -187,6 +189,10 @@ function pageUpdate() {
     // 2: En pause
     // 3: En file d’attente
     // 5: Vidéo en file d’attente interrompue
+
+    if (id_played != id) {
+        changeVideo(my_playlist[id]);
+    }
 
     let currentTime = player.getCurrentTime();
     let currentState = player.getPlayerState();
@@ -372,10 +378,6 @@ function waitLib() {
                 let pl_ctn = lcl_load_list('pl_ctn');
                 my_playlist = pl_ctn ? pl_ctn : my_playlist;
 
-                if (player) {
-                    //Charge la vidéo avec l'ID sauvegardé
-                    changeVideo(my_playlist[id]);
-                }
             } else {
                 lcl_rmv_all();
                 lcl_save('plid', listValue);

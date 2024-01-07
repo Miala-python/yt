@@ -84,7 +84,7 @@ function run() {
         if (spanElements[0]) {
             for (var i = 0; i < spanElements.length; i++) {
                 element = spanElements[i];
-                if (element.textContent.indexOf('Playlists recommandées') !== -1) {
+                if (element.textContent.indexOf('Playlists recommandées') !== -1 || element.textContent.indexOf('Vidéos recommandées') !== -1) {
                     // Accédez à son parent
                     var parentElement = element.parentNode;
                     for (let parent_lvl = 0; parent_lvl < 4; parent_lvl++) {

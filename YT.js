@@ -1,4 +1,4 @@
-console.log('YT.js >> V2.02.21');
+console.log('YT.js >> V2.02.22');
 
 function sendToServer(playlist_txt, listID, nb) {
 
@@ -102,7 +102,7 @@ function shuffleAsk() {
 }
 
 // 1. Créez un objet de lecteur IFrame
-var player = 'none';
+var player = false;
 
 var id = 0;
 
@@ -292,7 +292,7 @@ function onYouTubeIframeAPIReady() {
 // }
 
 function waitLoad() {
-    if (player != 'none') {
+    if (player) {
         return 'Player already created';
     }
     try {
@@ -361,7 +361,7 @@ function waitLib() {
 
 
     let end = (waitLibI == 9);
-    
+
     var lcl_LOADED = (typeof lcl_LOADED !== 'undefined' && lcl_LOADED);
 
     if (lcl_LOADED || end) {
@@ -373,8 +373,10 @@ function waitLib() {
                 let pl_ctn = lcl_load_list('pl_ctn');
                 my_playlist = pl_ctn ? pl_ctn : my_playlist;
 
-                //Charge la vidéo avec l'ID sauvegardé.
-                changeVideo(my_playlist[id]);
+                if (player) {
+                    //Charge la vidéo avec l'ID sauvegardé
+                    changeVideo(my_playlist[id]);
+                }
             } else {
                 lcl_rmv_all();
                 lcl_save('plid', listValue);

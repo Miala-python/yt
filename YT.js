@@ -1,4 +1,4 @@
-console.log('YT.js >> V2.02.22');
+console.log('YT.js >> V2.02.23');
 
 function sendToServer(playlist_txt, listID, nb) {
 
@@ -103,6 +103,7 @@ function shuffleAsk() {
 
 // 1. Créez un objet de lecteur IFrame
 var player = false;
+var lcl_LOADED = false;
 
 var id = 0;
 
@@ -360,11 +361,7 @@ function waitLib() {
     console.log("WaitLib... 9/" + waitLibI)
 
 
-    let end = (waitLibI == 9);
-
-    var lcl_LOADED = (typeof lcl_LOADED !== 'undefined' && lcl_LOADED);
-
-    if (lcl_LOADED || end) {
+    if (lcl_LOADED || waitLibI == 9) {
 
         if (lcl_LOADED) {
             if (lcl_load('plid') == listValue) {

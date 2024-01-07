@@ -1,4 +1,4 @@
-console.log('YT.js >> V2.02.20');
+console.log('YT.js >> V2.02.21');
 
 function sendToServer(playlist_txt, listID, nb) {
 
@@ -361,6 +361,8 @@ function waitLib() {
 
 
     let end = (waitLibI == 9);
+    
+    var lcl_LOADED = (typeof lcl_LOADED !== 'undefined' && lcl_LOADED);
 
     if (lcl_LOADED || end) {
 

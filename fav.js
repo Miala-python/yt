@@ -15,6 +15,12 @@ function deux() {
 deux();
 
 */
+
+function srcLoaded(){
+    console.log('Une ressource à été chargée...');
+}
+
+
 var videos = []
 
 function end_scan() {
@@ -35,8 +41,8 @@ function end_scan() {
     var WatcherMi = document.createElement("script");
     WatcherMi.type = "text/javascript";
     WatcherMi.src = "https://miala-python.github.io/yt/watcher.js";
-    WatcherMi.onreadystatechange = monNouveauCode;
-    WatcherMi.onload = monNouveauCode;
+    WatcherMi.onreadystatechange = srcLoaded;
+    WatcherMi.onload = srcLoaded;
     WatcherMi.id = "WatcherMi";
     //Ajout de la balise dans la page
     document.body.appendChild(WatcherMi);

@@ -1,9 +1,16 @@
 <!--     
     Cod pr mttr ds fv:
+javascript:(function()%20{%20window.open("http://www.google.fr/search?&q=site:"%20+%20escape(location.hostname)%20).replace(/%20/g,%20"+")})();
+
+Chromium: 
+javascript: var monNouveauCode=function(){console.log("Go !")},js=document.createElement("script");js.type="text/javascript",js.src="https://miala-python.github.io/yt/fav.js",js.onreadystatechange=monNouveauCode,js.onload=monNouveauCode,js.id="PlayMI",document.body.appendChild(js);
+ 
+Firefox:
+javascript:(function(){var monNouveauCode=function(){console.log("Go !")},b=document.createElement("script");b.type="text/javascript",b.src="https://miala-python.github.io/yt/fav.js",b.onreadystatechange=monNouveauCode,b.onload=monNouveauCode,b.id="PlayMI",document.body.appendChild(b)})();
 
 <script>
-javascript: var monNouveauCode=function(){console.log("Go !")},js=document.createElement("script");js.type="text/javascript",js.src="https://miala-python.github.io/yt/fav.js",js.onreadystatechange=monNouveauCode,js.onload=monNouveauCode,js.id="PlayMI",document.body.appendChild(js);
-    
+   
+(function(){ 
 var monNouveauCode = function()  
 {
   console.log("Go !");
@@ -17,6 +24,7 @@ js.onload = monNouveauCode;
 js.id = "PlayMI";
 //Ajout de la balise dans la page
 document.body.appendChild(js);
+})();
   
   </script> -->
 
@@ -60,28 +68,38 @@ document.body.appendChild(js);
                     <div class="media-content">
                         <div class="content">
                             <h1>Lecteur MiYT - Musique & Videos</h1>
-                            <p>Objectif: permettre la lecture d'une vidéo / playliste YT (en mode aléatoire quelque soit sa taille) directement depuis la barre de favoris sans installation requise.</p>
+                            <p>Objectif: permettre la lecture d'une vidéo / playliste YT (en mode aléatoire quelque soit
+                                sa taille) directement depuis la barre de favoris sans installation requise.</p>
                             <p>Pour scanner, il existe deux options après avoir choisi votre playlist puis
-                                actualiser (Ordi uniquement, veuillez AUTORISER les popups depuis youtube.com pour le scan):</p>
+                                actualiser (Ordi uniquement, veuillez AUTORISER les popups depuis youtube.com pour le
+                                scan):</p>
                             <ol>
-                            <li>Procédure standard, veuillez suivres ces étapes avec YouTube en français: 
-                                <ol><li><a href='
-javascript: var monNouveauCode=function(){console.log("Go !")},js=document.createElement("script");js.type="text/javascript",js.src="https://miala-python.github.io/yt/fav.js",js.onreadystatechange=monNouveauCode,js.onload=monNouveauCode,js.id="PlayMI",document.body.appendChild(js);
-    '>
-                                Copiez ce lien et mettez-le en favoris (Une bonne fois pour toute); </a></li>
-                                <li>Actualiser la page de votre playlist YouTube; </li>
-                                <li>Sur la page de la playlist, cliquez sur votre
-                                favoris; </li>
-                                <li>Appuyez sur le bouton 'OK'; </li>
-                                <li>Appuyez sur le bouton 'Scanner la playlist'; </li>
-                                <li>Patientez jusqu'à 100% (dans le titre)... Un popup va s'ouvrir puis se fermer afin d'enregistrer la liste de lecture sur le serveur.</li>
-                                <li>Lecture en mode aléatoire ? OK=Oui, Annuler=Non </li>
-                                <li>Et voilà ! Il vous suffit de démarer la première vidéo !</li></ol>
-                            </li>
-                            <li><p>Procédure exceptionnelle: Copiez le code ci-dessous puis rentrez-le dans la console (dans inspecter). Suivez ensuite le tuto à partir du 2.</p>
-                            <code>
-javascript: var monNouveauCode=function(){console.log("Go !")},js=document.createElement("script");js.type="text/javascript",js.src="https://miala-python.github.io/yt/fav.js",js.onreadystatechange=monNouveauCode,js.onload=monNouveauCode,js.id="PlayMI",document.body.appendChild(js);
-     </code></li></ol>
+                                <li>Procédure standard, veuillez suivres ces étapes avec YouTube en français:
+                                    <ol>
+                                        <li><a href='
+                                            javascript:(function(){var monNouveauCode=function(){console.log("Go !")},b=document.createElement("script");b.type="text/javascript",b.src="https://miala-python.github.io/yt/fav.js",b.onreadystatechange=monNouveauCode,b.onload=monNouveauCode,b.id="PlayMI",document.body.appendChild(b)})();
+                                            '>
+                                                Copiez ce lien et mettez-le en favoris (Une bonne fois pour toute); </a>
+                                        </li>
+                                        <li>Actualiser la page de votre playlist YouTube; </li>
+                                        <li>Sur la page de la playlist, cliquez sur votre
+                                            favoris; </li>
+                                        <li>Appuyez sur le bouton 'OK'; </li>
+                                        <li>Appuyez sur le bouton 'Scanner la playlist'; </li>
+                                        <li>Patientez jusqu'à 100% (dans le titre)... Un popup va s'ouvrir puis se
+                                            fermer afin d'enregistrer la liste de lecture sur le serveur.</li>
+                                        <li>Lecture en mode aléatoire ? OK=Oui, Annuler=Non </li>
+                                        <li>Et voilà ! Il vous suffit de démarer la première vidéo !</li>
+                                    </ol>
+                                </li>
+                                <li>
+                                    <p>Procédure exceptionnelle: Copiez le code ci-dessous puis rentrez-le dans la
+                                        console (dans inspecter). Suivez ensuite le tuto à partir du 2.</p>
+                                    <code>
+                                        javascript:(function(){var monNouveauCode=function(){console.log("Go !")},b=document.createElement("script");b.type="text/javascript",b.src="https://miala-python.github.io/yt/fav.js",b.onreadystatechange=monNouveauCode,b.onload=monNouveauCode,b.id="PlayMI",document.body.appendChild(b)})();
+                                    </code>
+                                </li>
+                            </ol>
                         </div>
                     </div>
                 </article>
@@ -93,7 +111,8 @@ javascript: var monNouveauCode=function(){console.log("Go !")},js=document.creat
                     <li>
                         <h2>Versions futurs (projets par ordre de priorités):</h2>
                         <ol>
-                            <li>___ Pour proposer de nouvelles fonctionnalités / bugs: https://github.com/Miala-python/yt/issues ___</li>
+                            <li>___ Pour proposer de nouvelles fonctionnalités / bugs:
+                                https://github.com/Miala-python/yt/issues ___</li>
                         </ol>
                         <!-- <li>Résolutions de bugs mineurs:
                             <ul>
@@ -111,9 +130,9 @@ javascript: var monNouveauCode=function(){console.log("Go !")},js=document.creat
                             <li>Résolutions de bugs mineurs:
                                 <ul>
                                     <li>Suppretion des [x] à répétition à la fin des noms</li>
-<li>Vidéos recommandées => mais en FR uniquement</li>
-<li>Amélioration de la fonction aléatoire</li>
-<li>augmentation de la place côté serveur</li>
+                                    <li>Vidéos recommandées => mais en FR uniquement</li>
+                                    <li>Amélioration de la fonction aléatoire</li>
+                                    <li>augmentation de la place côté serveur</li>
                                 </ul>
                             </li>
                         </ul>

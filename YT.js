@@ -363,6 +363,7 @@ document.getElementById('reset_btn').onclick = function () {
 
 var waitLibI = 0; //end if too much
 
+// Attente du chargement des bibliothèques externes: lcl, ...
 function waitLib() {
 
     waitLibI += 1;

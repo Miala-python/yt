@@ -125,7 +125,7 @@ function scan_vids() {
 }
 
 
-let TopBar = document.querySelector('div#container.style-scope.ytd-masthead');
+var TopBar = document.querySelector('div#container.style-scope.ytd-masthead');
 
 function run() {
     Array.from(play_buttons).forEach(e => {
@@ -137,10 +137,9 @@ function run() {
         e.onclick = function () {
             e.setAttribute("disabled", "");
             e.innerHTML = "Scan en cours...";
+            TopBar.innerHTML = `Scan en cours... Veuillez patienter... (Pourcentage dans le titre de la page)`;
             scan_vids();
         }
-        TopBar.innerHTML = `Scan en cours... Veuillez patienter... (Pourcentage dans le titre de la page)`;
-        TopBar.setAttribute("style", `font-size: x-large`);
     });
 
 }
@@ -164,19 +163,21 @@ if (url.hostname === "www.youtube.com" && url.pathname === "/watch") {
         document.querySelector('html').appendChild(pln);
         run();
 
-        TopBar.innerHTML = `
+        TopBar.innerHTML = `<p>
             Appuyez sur 
-            <a onclick="
-                Array.from(play_buttons).forEach(e => {
-                    e.setAttribute('disabled', '');
-                    e.innerHTML = 'Scan en cours...';
-                });
-                TopBar.innerHTML = 'Scan en cours... Veuillez patienter... (Pourcentage dans le titre de la page)';
-                scan_vids();
-                ">
-                 ce lien  
-            </a>
-            pour lancer le scan.
+            <button 
+                style="color: #000000; background-color: rgb(0 199 50);" 
+                onclick="
+                    Array.from(play_buttons).forEach(e => {
+                        e.setAttribute('disabled', '');
+                        e.innerHTML = 'Scan en cours...';
+                    });
+                    TopBar.innerHTML = 'Scan en cours... Veuillez patienter... (Pourcentage dans le titre de la page)';
+                    scan_vids();"
+            >
+                ce bouton 
+            </button>
+            pour lancer le scan.</p>
         `;
         TopBar.setAttribute("style", `
         font-size: x-large

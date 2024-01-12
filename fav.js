@@ -1,4 +1,4 @@
-console.log('fav.js >> V2.02.08');
+console.log('fav.js >> V2.02.09');
 
 /*
 
@@ -143,7 +143,7 @@ function run() {
 
 var url = new URL(window.location.href);
 var searchParams = new URLSearchParams(url.search);
-let TopBar = document.querySelectorAll('div#container.style-scope.ytd-masthead');
+let TopBar = document.querySelector('div#container.style-scope.ytd-masthead');
 
 if (url.hostname === "www.youtube.com" && url.pathname === "/watch") {
     var v = searchParams.get("v");

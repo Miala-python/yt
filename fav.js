@@ -164,10 +164,12 @@ if (url.hostname === "www.youtube.com" && url.pathname === "/watch") {
             Appuyez sur 
             <button onclick="
                 Array.from(play_buttons).forEach(e => {
-                    e.setAttribute("disabled", "");
-                    e.innerHTML = "Scan en cours...";
+                    e.setAttribute('disabled', '');
+                    e.innerHTML = 'Scan en cours...';
                 });
-                scan_vids();">
+                TopBar.innerHTML = 'Scan en cours... Veuillez patienter... (Pourcentage dans le titre de la page)';
+                scan_vids();
+                ">
                 ce bouton 
             </button>
             pour lancer le scan.

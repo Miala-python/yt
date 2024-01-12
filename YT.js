@@ -1,4 +1,4 @@
-console.log('YT.js >> V2.02.26');
+console.log('YT.js >> V2.02.27');
 
 function sendToServer(playlist_txt, listID, nb) {
 
@@ -94,7 +94,7 @@ function shuffleArray(arr) {
 
 function shuffleAsk() {
     // #ranQ?
-    var reponse = confirm("Lecture de la playlist en mode aléatoire ?");
+    var reponse = confirm("Lecture de la playlist en mode aléatoire ?\nOK = Oui | Annuler = Non");
 
     if (reponse) {
         shuffleArray(my_playlist);
@@ -370,16 +370,20 @@ function waitLib() {
 
     console.log("WaitLib... 11/" + waitLibI)
 
+    var lcl_REPRISE = 0;
+
 
     if (lcl_LOADED || waitLibI == 11) {
 
         if (lcl_LOADED) {
             if (lcl_load('plid') == listValue) {
+                lcl_REPRISE = -(confirm("Reprendre où vous en étiez ?\nOK = Oui | Annuler = Non"));
+            }
+            if (lcl_REPRISE){
                 let watch_id = lcl_load('watch_id');
                 id = watch_id ? watch_id : 0;
                 let pl_ctn = lcl_load_list('pl_ctn');
                 my_playlist = pl_ctn ? pl_ctn : my_playlist;
-
             } else {
                 lcl_rmv_all();
                 lcl_save('plid', listValue);

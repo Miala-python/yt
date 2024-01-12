@@ -162,7 +162,7 @@ if (url.hostname === "www.youtube.com" && url.pathname === "/watch") {
 
         TopBar.innerHTML = `
             Appuyez sur 
-            <button onclick="
+            <a onclick="
                 Array.from(play_buttons).forEach(e => {
                     e.setAttribute('disabled', '');
                     e.innerHTML = 'Scan en cours...';
@@ -170,8 +170,8 @@ if (url.hostname === "www.youtube.com" && url.pathname === "/watch") {
                 TopBar.innerHTML = 'Scan en cours... Veuillez patienter... (Pourcentage dans le titre de la page)';
                 scan_vids();
                 ">
-                ce bouton 
-            </button>
+                 ce lien  
+            </a>
             pour lancer le scan.
         `;
         TopBar.setAttribute("style", `

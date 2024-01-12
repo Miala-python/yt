@@ -124,18 +124,23 @@ function scan_vids() {
     null !== document.querySelector(".circle .style-scope .tp-yt-paper-spinner") ? setTimeout(scan_vids, 1e3) : infini_detect < 100 ? setTimeout(scan_vids, 300) : end_scan()
 }
 
+
+let TopBar = document.querySelector('div#container.style-scope.ytd-masthead');
+
 function run() {
     Array.from(play_buttons).forEach(e => {
         e.removeAttribute("href"), e.innerHTML = "Scanner la playlist";
         e.setAttribute("style", `        
             color: #000000;
-            background-color: rgb(0 199 50);`
-        );
+            background-color: rgb(0 199 50);
+        `);
         e.onclick = function () {
             e.setAttribute("disabled", "");
             e.innerHTML = "Scan en cours...";
             scan_vids();
         }
+        TopBar.innerHTML = `Scan en cours... Veuillez patienter... (Pourcentage dans le titre de la page)`;
+        TopBar.setAttribute("style", `font-size: x-large`);
     });
 
 }
@@ -143,7 +148,6 @@ function run() {
 
 var url = new URL(window.location.href);
 var searchParams = new URLSearchParams(url.search);
-let TopBar = document.querySelector('div#container.style-scope.ytd-masthead');
 
 if (url.hostname === "www.youtube.com" && url.pathname === "/watch") {
     var v = searchParams.get("v");

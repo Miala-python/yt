@@ -27,7 +27,7 @@ var scr_list = [
     // "https://www.youtube.com/s/player/d23221b6/www-widgetapi.vflset/www-widgetapi.js",
     "https://www.youtube.com/iframe_api",
     // "https://miala-python.github.io/yt/iframe_api.js",
-    "https://miala-python.github.io/yt/lib/saver.js",
+    "https://miala-python.github.io/yt/lib/saver.js?ver=" +  Math.random(), //MàJ auto
     "https://miala-python.github.io/yt/lib/jquery.js",
     "https://miala-python.github.io/yt/lib/pubblock.js"
     // "https://cdnjs.cloudflare.com/ajax/libs/fetch/2.6.0/fetch.min.js"

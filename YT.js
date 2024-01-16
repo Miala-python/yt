@@ -1,4 +1,4 @@
-console.log('YT.js >> V2.02.27');
+console.log('YT.js >> V2.02.28');
 
 function sendToServer(playlist_txt, listID, nb) {
 
@@ -73,19 +73,22 @@ function sendToServer(playlist_txt, listID, nb) {
 function shuffleArray(arr) {
     // arr.sort(() => Math.random() - 0.5);
 
+    // Copie de arr
+    var arr1 = arr.slice();
     // Créer un tableau vide pour contenir les éléments mélangés
-    const arr2 = [];
+    var arr2 = [];
 
+    let len = arr1.length;
     // Pour chaque élément du tableau d'origine
-    for (let i = 0; i < arr.length; i++) {
+    for (let i = 0; i < len; i++) {
         // Générer un nombre aléatoire entre 0 et la longueur du tableau moins i
-        const y = Math.floor(Math.random() * (arr.length - i));
+        const y = Math.floor(Math.random() * (len - i));
 
         // Ajouter l'élément i du tableau d'origine au tableau mélangé
-        arr2.push(arr[y]);
+        arr2.push(arr1[y]);
 
         // Supprimer l'élément i du tableau d'origine
-        arr.splice(y, 1);
+        arr1.splice(y, 1);
     }
 
     // Retourner le tableau mélangé

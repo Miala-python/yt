@@ -1,4 +1,24 @@
-console.log('YT.js >> V2.02.23');
+console.log('YT.js >> V2.02.24');
+
+var player = false;
+if (typeof lcl_LOADED === 'undefined') {
+    var lcl_LOADED = false;
+}
+var lcl_pl_id = NaN;
+
+var id = 0;
+var id_played = 0;
+
+var currentUrl = window.location.href;
+var url = new URL(currentUrl);
+var params = new URLSearchParams(url.search);
+var listValue = params.get("list");
+
+var my_playlist_txt = document.getElementById('my_playlist').innerHTML.trim();
+var my_playlist = my_playlist_txt.split(';');
+
+var checkbox_nopause = document.getElementById("PauseForbidSw");
+var nopause = 0;
 
 function sendToServer(playlist_txt, listID, nb) {
 
@@ -104,27 +124,6 @@ function shuffleAsk() {
         my_playlist = shuffleArray(my_playlist);
     }
 }
-
-// 1. Créez un objet de lecteur IFrame
-var player = false;
-if (typeof lcl_LOADED === 'undefined') {
-    var lcl_LOADED = false;
-}
-var lcl_pl_id = NaN;
-
-var id = 0;
-var id_played = 0;
-
-var currentUrl = window.location.href;
-var url = new URL(currentUrl);
-var params = new URLSearchParams(url.search);
-var listValue = params.get("list");
-
-var my_playlist_txt = document.getElementById('my_playlist').innerHTML.trim();
-var my_playlist = my_playlist_txt.split(';');
-
-var checkbox_nopause = document.getElementById("PauseForbidSw");
-var nopause = 0;
 
 checkbox_nopause.addEventListener("change", function () {
     nopause = checkbox_nopause.checked;
@@ -375,7 +374,7 @@ function waitLib() {
 
     console.log("WaitLib... 11/" + waitLibI)
 
-    var lcl_REPRISE = 0;
+    var lcl_REPRISE = false;
 
 
     if (lcl_LOADED || waitLibI == 11) {
@@ -385,7 +384,7 @@ function waitLib() {
             let lcl_pl_id = list_pl_id.indexOf(listValue);
 
             if (lcl_pl_id != -1) {
-                lcl_REPRISE = -(confirm("Reprendre où vous en étiez ?\nOK = Oui | Annuler = Non"));
+                lcl_REPRISE = confirm("Reprendre où vous en étiez ?\nOK = Oui | Annuler = Non");
             }else{
                 lcl_pl_id = list_pl_id.length;
             }

@@ -1,4 +1,4 @@
-console.log('watcher.js >> V2.02.17');
+console.log('watcher.js >> V2.02.24');
 
 // File: Create Watcher Page
 
@@ -8,6 +8,7 @@ function monNouveauCode () {
 
 var htmlElement = document.querySelector('html');
 htmlElement.removeAttribute('style');
+htmlElement.setAttribute('class', 'has-background-dark has-text-danger-light');
 
 window.stop();
 
@@ -49,7 +50,7 @@ body.innerHTML =
     <h1>Veuillez répondre à la question: OK = Oui , Annuler = Non</h1><br>
     
     <p class="image is-128x128 is-centered">
-        <img class="is-rounded" src="./icon.png" alt="Lecteur MiYT">
+        <img class="is-rounded" src="https://miala-python.github.io/yt/icon.png" alt="Lecteur MiYT">
     </p><br><br>
 </div></div>
 `

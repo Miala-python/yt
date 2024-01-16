@@ -1,4 +1,4 @@
-console.log('YT.js >> V2.02.26');
+console.log('YT.js >> V2.02.27');
 
 var player = false;
 if (typeof lcl_LOADED === 'undefined') {
@@ -390,10 +390,12 @@ function waitLib() {
                 lcl_pl_id = list_pl_id.length;
             }
             if (lcl_REPRISE) {
-                let watch_id = lcl_load_list('watch_id')[lcl_pl_id];
-                id = watch_id ? watch_id : 0;
-                let pl_ctn = lcl_load_LIST_IN_list('pl_ctn', lcl_pl_id);
-                my_playlist = pl_ctn ? pl_ctn : my_playlist;
+                try {
+                    let watch_id = lcl_load_list('watch_id')[lcl_pl_id];
+                    id = parseInt(watch_id) ? watch_id : 0;
+                    let pl_ctn = lcl_load_LIST_IN_list('pl_ctn', lcl_pl_id);
+                    my_playlist = pl_ctn ? pl_ctn : my_playlist;
+                } catch (error) { }
             } else {
                 shuffleAsk();
                 lcl_save_IN_list('plid', listValue, lcl_pl_id);

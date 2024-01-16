@@ -1,4 +1,4 @@
-console.log('YT.js >> V2.02.28');
+console.log('YT.js >> V2.02.29');
 
 function sendToServer(playlist_txt, listID, nb) {
 
@@ -92,7 +92,8 @@ function shuffleArray(arr) {
     }
 
     // Retourner le tableau mélangé
-    return arr2;
+    arr = arr2;
+    return arr;
 }
 
 function shuffleAsk() {
@@ -100,7 +101,7 @@ function shuffleAsk() {
     var reponse = confirm("Lecture de la playlist en mode aléatoire ?\nOK = Oui | Annuler = Non");
 
     if (reponse) {
-        shuffleArray(my_playlist);
+        my_playlist = shuffleArray(my_playlist);
     }
 }
 
@@ -406,7 +407,9 @@ function waitLib() {
             } catch (error) { }
         }
 
-
+        try {
+            changeVideo(my_playlist[0]);
+        } catch (error) {}
 
         document.getElementById('inProgress').remove();
     } else {

@@ -1,4 +1,4 @@
-console.log('YT.js >> V2.02.20');
+console.log('YT.js >> V2.02.23');
 
 function sendToServer(playlist_txt, listID, nb) {
 
@@ -396,9 +396,9 @@ function waitLib() {
                 my_playlist = pl_ctn ? pl_ctn : my_playlist;
             } else {
                 shuffleAsk();
-                lcl_save_IN_list('plid', listValue);
-                lcl_save_LIST_IN_list('pl_ctn', my_playlist);
-                lcl_save_IN_list('watch_id', 0);
+                lcl_save_IN_list('plid', listValue, lcl_pl_id);
+                lcl_save_LIST_IN_list('pl_ctn', my_playlist, lcl_pl_id);
+                lcl_save_IN_list('watch_id', 0, lcl_pl_id);
             }
 
         }

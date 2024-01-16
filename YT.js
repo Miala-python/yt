@@ -412,9 +412,7 @@ function waitLib() {
             } catch (error) { }
         }
 
-        try {
-            changeVideo(my_playlist[0]);
-        } catch (error) {}
+        id_played = id + 1;
 
         document.getElementById('inProgress').remove();
     } else {

@@ -24,6 +24,8 @@ head.innerHTML = `
 
 const body = document.querySelector('body');
 
+body.setAttribute('class', 'has-background-dark has-text-danger-light');
+
 var scr_list = [
     // "https://www.youtube.com/s/player/d23221b6/www-widgetapi.vflset/www-widgetapi.js",
     "https://www.youtube.com/iframe_api",
@@ -59,27 +61,27 @@ body.innerHTML =
 
 <div class="block">
 <div class="tags are-medium">
-<span class="tag is-primary is-light"><a href="https://miala.000webhostapp.com/YT/">Lecteur MiYT</a></span>
-<span class="tag is-light is-danger"><a id="pllink" href="#">Playlist</a></span>
-<span class="tag is-light is-danger"><a href="https://www.youtube.com/?Mi=Music">YouTube</a></span>
+<span class="tag is-primary"><a href="https://miala.000webhostapp.com/YT/">Lecteur MiYT</a></span>
+<span class="tag is-danger"><a id="pllink" href="#">Playlist</a></span>
+<span class="tag is-danger"><a href="https://www.youtube.com/?Mi=Music">YouTube</a></span>
 </div>
 <br><br>
 <div id="player"></div>
 <br>
-<span id="infos_vid" class="tag is-light">Chargement en cours... - MialaMusic</span><br><br>
+<span id="infos_vid" class="tag">Chargement en cours... - MialaMusic</span><br><br>
 <br>
 <div class="buttons">
-    <button id="prev_btn" class="button is-danger is-light">
+    <button id="prev_btn" class="button is-danger">
         <span class="material-symbols-outlined gfonticon_button icon is-small">
             skip_previous
         </span>
     </button>
-    <button id="next_btn" class="button is-success is-light">
+    <button id="next_btn" class="button is-success">
         <span class="material-symbols-outlined gfonticon_button icon is-small">
             skip_next
         </span></button>
     <!--
-    <button id="PiP_btn" class="button is-info is-light" onclick="if (document.pictureInPictureElement) {
+    <button id="PiP_btn" class="button is-info" onclick="if (document.pictureInPictureElement) {
         document.exitPictureInPicture();
       } else if (document.pictureInPictureEnabled) {
         video.requestPictureInPicture();
@@ -94,7 +96,7 @@ body.innerHTML =
 <br>
 
 <div class="buttons">
-    <button id="reset_btn" class="button is-warning is-light">
+    <button id="reset_btn" class="button is-warning">
         <span class="material-symbols-outlined gfonticon_button icon is-small">
             restart_alt
         </span>

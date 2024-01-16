@@ -15,3 +15,10 @@ Notes pour le dev:
 
 index.html => fav => watcher (=> iframe ms YT) => YT => add.php
 index.php => load.php î
+
+LCL:
+- saver_version => MàJ reset
+- plid [ ,  ,  , ]
+- pl_ctn [[] ,[], []]
+- watch_id [ ,  ,  , ]
+=>> lcl_pl_id

@@ -1,4 +1,4 @@
-console.log('YT.js >> V2.02.29');
+console.log('YT.js >> V2.02.20');
 
 function sendToServer(playlist_txt, listID, nb) {
 
@@ -110,6 +110,7 @@ var player = false;
 if (typeof lcl_LOADED === 'undefined') {
     var lcl_LOADED = false;
 }
+var lcl_pl_id = NaN;
 
 var id = 0;
 var id_played = 0;
@@ -144,8 +145,8 @@ function changeVideo(vid_id) {
     document.getElementById('infos_vid').innerText = 'Chargement... (ID: ' + vid_id + ' #' + id + ') - MialaMusic Playlist Randomer';
     // window.history.pushState(null, '', '/YT/watch.php?idx=' + id);
 
-    if (lcl_LOADED) {
-        lcl_save('watch_id', id);
+    if (lcl_LOADED && !isNaN(lcl_pl_id)) {
+        lcl_save_IN_list('watch_id', id, lcl_pl_id);
     }
 }
 
@@ -353,7 +354,7 @@ console.log(waitLoad());
 
 
 document.getElementById('reset_btn').onclick = function () {
-    var reponse = confirm("Souhaitez-vous réinitialiser la progression actuelle (numéro de la vidéo et ordre) ?\nPS: Autorisez les popups.");
+    var reponse = confirm("Souhaitez-vous réinitialiser les progressions pour toutes les listes de lecture ?\nPS: Autorisez les popups pour que cela fonctionne.");
     let list_length = my_playlist.length;
 
     if (reponse) {
@@ -380,19 +381,24 @@ function waitLib() {
     if (lcl_LOADED || waitLibI == 11) {
 
         if (lcl_LOADED) {
-            if (lcl_load('plid') == listValue) {
+            let list_pl_id = lcl_load_list('plid');
+            let lcl_pl_id = list_pl_id.indexOf(listValue);
+
+            if (lcl_pl_id != -1) {
                 lcl_REPRISE = -(confirm("Reprendre où vous en étiez ?\nOK = Oui | Annuler = Non"));
+            }else{
+                lcl_pl_id = list_pl_id.length;
             }
             if (lcl_REPRISE){
-                let watch_id = lcl_load('watch_id');
+                let watch_id = lcl_load_list('watch_id')[lcl_pl_id];
                 id = watch_id ? watch_id : 0;
-                let pl_ctn = lcl_load_list('pl_ctn');
+                let pl_ctn = lcl_load_LIST_IN_list('pl_ctn', lcl_pl_id);
                 my_playlist = pl_ctn ? pl_ctn : my_playlist;
             } else {
-                lcl_rmv_all();
-                lcl_save('plid', listValue);
                 shuffleAsk();
-                lcl_save_list('pl_ctn', my_playlist);
+                lcl_save_IN_list('plid', listValue);
+                lcl_save_LIST_IN_list('pl_ctn', my_playlist);
+                lcl_save_IN_list('watch_id', 0);
             }
 
         }

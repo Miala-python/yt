@@ -10,6 +10,12 @@ Plus d'informations sur le projet ainsi que la mise en place / installation (mê
         ou
     https://miala-python.github.io/yt/ (Version client uniquement)
 
+Codes de version:
+α : Ne fonctionne pas
+β : Certaines fonctionnalités ne fonctionnent pas 
+U : Unstable => Manque de tests 
+S : Stable => Fonctionne correctement (sauf bugs mineurs)
+F : Finale => Releases disponible, point de sauvegarde
 
 Notes pour le dev:
 

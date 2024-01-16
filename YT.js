@@ -1,4 +1,4 @@
-console.log('YT.js >> V2.02.25');
+console.log('YT.js >> V2.02.26');
 
 var player = false;
 if (typeof lcl_LOADED === 'undefined') {
@@ -139,12 +139,7 @@ function changeVideo(vid_id) {
     console.log("VidChg: " + vid_id);
     player.pauseVideo();
     id_played = id;
-    // player.loadVideoById(vid_id);
-    player.loadById({
-        videoId: vid_id
-        // startSeconds: 0,
-        // endSeconds: 180
-    });
+    player.loadVideoById(vid_id);
     player.playVideo();
     document.title = 'MialaMusic Playlist Randomer';
     document.getElementById('infos_vid').innerText = 'Chargement... (ID: ' + vid_id + ' #' + id + ') - MialaMusic Playlist Randomer';

@@ -1,4 +1,4 @@
-console.log('YT.js >> V2.02.24');
+console.log('YT.js >> V2.02.25');
 
 var player = false;
 if (typeof lcl_LOADED === 'undefined') {
@@ -136,9 +136,15 @@ function onPlayerReady(event) {
 }
 
 function changeVideo(vid_id) {
+    console.log("VidChg: " + vid_id);
     player.pauseVideo();
     id_played = id;
-    player.loadVideoById(vid_id);
+    // player.loadVideoById(vid_id);
+    player.loadById({
+        videoId: vid_id
+        // startSeconds: 0,
+        // endSeconds: 180
+    });
     player.playVideo();
     document.title = 'MialaMusic Playlist Randomer';
     document.getElementById('infos_vid').innerText = 'Chargement... (ID: ' + vid_id + ' #' + id + ') - MialaMusic Playlist Randomer';
@@ -385,10 +391,10 @@ function waitLib() {
 
             if (lcl_pl_id != -1) {
                 lcl_REPRISE = confirm("Reprendre où vous en étiez ?\nOK = Oui | Annuler = Non");
-            }else{
+            } else {
                 lcl_pl_id = list_pl_id.length;
             }
-            if (lcl_REPRISE){
+            if (lcl_REPRISE) {
                 let watch_id = lcl_load_list('watch_id')[lcl_pl_id];
                 id = watch_id ? watch_id : 0;
                 let pl_ctn = lcl_load_LIST_IN_list('pl_ctn', lcl_pl_id);

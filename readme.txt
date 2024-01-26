@@ -1,3 +1,6 @@
+Migration v0.03.0: https://github.com/MialaProg/MiYT
+
+
 Vous souhaitez nous aider ?
 Voici quelques problèmes dont la solution nous est inconnus:
 - Bouton suivant en arrière plan: Sur android dans la notification de lecture en arrière plan, ou en mode Picture-in-Picture, on peut parfois observer un bouton [Piste suivante]. Comment faire en sorte que ce bouton execute la fonction js next(); ?

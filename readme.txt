@@ -1,3 +1,8 @@
+After 10m of non activity, this repa was archived.
+If you want to use/contribute to this player, please see at
+https://github.com/MialaProg/MiYT
+
+
 Migration v0.03.0: https://github.com/MialaProg/MiYT
 
 

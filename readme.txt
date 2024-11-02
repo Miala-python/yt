@@ -1,4 +1,4 @@
-After 10m of non activity, this repa was archived.
+After 10m of non activity, this repo was archived.
 If you want to use/contribute to this player, please see at
 https://github.com/MialaProg/MiYT
 
